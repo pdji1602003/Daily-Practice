@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Grid</title>
+
+
+    <style>
+        .container {
+            display: grid;
+            min-height: 100vh;
+            border: 2px solid red;
+
+            grid-template-rows:50px 2px auto 2px 20px;
+        }
+
+        .top {
+            grid-column: 1;
+            grid-row:1;
+        }
+
+        .center {
+            grid-column: 1;
+            grid-row: 3;
+
+            display: grid;
+            grid-template-columns: 200px 5px auto;
+            border: 2px solid green;
+        }
+
+        .left {
+            grid-column: 1;
+            grid-row: 1;
+            width: 200px;
+            height: 100%;
+            border: 2px solid blue;
+        }
+
+        .right {
+            grid-column: 3;
+            grid-row: 1;
+            height: 100%;
+            border: 2px solid blue;
+        }
+
+        .bottom {
+            grid-column: 1;
+            grid-row:4;
+
+            height: 20px;
+            border: solid 1px gold;
+        }
+
+
+
+
+    </style>
+
+</head>
+
+<body>
+    <h1>Grid</h1>
+    <div class="container">
+        <div class="top">Top</div>
+        <div class="center">
+            <div class="left">Left</div>
+            <div class="right">Right</div>
+        </div>
+        <div class="bottom">Bottom</div>
+    </div>
+</body>
+
+</html>

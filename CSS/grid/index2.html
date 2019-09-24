@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Grid 2</title>
+
+    <style>
+        * {
+            font-size: .9rem;
+            overflow-x: hidden;
+        }
+        .wrapper {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            /*  
+            grid-column-gap: 1em;
+            grid-row-gap: 1em;
+            */
+            grid-gap: 1em;
+        }
+        .wrapper > div {
+            background-color: #eee;
+            padding: 1em;
+        }
+        .wrapper > div:nth-child(odd){
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor at dolore laborum voluptate quia repellat quaerat cupiditate velit! Doloremque aspernatur commodi nemo? Laborum aspernatur voluptatibus totam quam. Consectetur facere voluptas inventore. Labore molestias consequatur, impedit hic aliquid praesentium maxime ex laborum ullam sint? Odio, quasi nesciunt. Cupiditate voluptatibus sint, mollitia laudantium ullam nobis. Porro debitis, repellendus cum saepe dicta harum, dolore eveniet assumenda cupiditate dolores rem? Culpa doloribus tempora pariatur architecto itaque harum obcaecati. Provident mollitia recusandae laudantium aperiam perferendis.</div>
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nesciunt ipsam harum ab atque a delectus excepturi reprehenderit! Sint, impedit!</div>
+
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor at dolore laborum voluptate quia repellat quaerat cupiditate velit! Doloremque aspernatur commodi nemo? Laborum aspernatur voluptatibus totam quam. Consectetur facere voluptas inventore. Labore molestias consequatur, impedit hic aliquid praesentium maxime ex laborum ullam sint? Odio, quasi nesciunt. Cupiditate voluptatibus sint, mollitia laudantium ullam nobis. Porro debitis, repellendus cum saepe dicta harum, dolore eveniet assumenda cupiditate dolores rem? Culpa doloribus tempora pariatur architecto itaque harum obcaecati. Provident mollitia recusandae laudantium aperiam perferendis.</div>
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nesciunt ipsam harum ab atque a delectus excepturi reprehenderit! Sint, impedit!</div>
+    </div>
+
+</body>
+</html>
