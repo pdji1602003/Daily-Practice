@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Clear Float</title>
+    <style>
+        .container {
+            background-color: aquamarine;
+            border: 2px solid green;
+        }
+
+        /* using overflow to clear float */
+        .container1 {
+            /* 在父元素上設置overflow hidden清除float，因為如此會生成新的Box Formatting Context */
+            /* 仔細一想這樣蠻合理的，因為這個屬性可以設置用來隱藏溢出內容，或產生滾條，代表在使用這屬性的同時，他也生成了一個新個BFC區域 */
+            overflow: auto;
+        }
+
+        /* using pseudo element to clear float */
+        .container2::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+         /* using clear property to clear float */
+        .clear { 
+            /* 不允許雙邊有浮動產生 */
+            clear: both;
+        }
+
+        .float {
+            float: left;
+            width: 50px;
+            height: 50px;
+            background-color: #f3f3f3;
+            border: 2px solid black;
+            padding: 1em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h2>using overflow to clear float</h2>
+    <div class="container container1">
+        <div class="float"></div>
+    </div>
+    <h2>using pseudo element to clear float</h2>
+    <div class="container container2">
+        <div class="float"></div>
+        <div class="float"></div>
+        <div class="float"></div>
+    </div>
+    <h2>using clear property to clear float</h2>
+    <div class="container">
+        <div class="float"></div>
+        <div class="float"></div>
+        <div class="float"></div>
+        <div class="clear"></div>
+    </div>
+    
+</body>
+
+</html>
