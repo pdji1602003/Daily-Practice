@@ -1,0 +1,58 @@
+*{
+    font-size:.9rem;
+}
+
+@media(min-width:768px){
+
+    /* 
+    大於768尺寸的螢幕其display值才會是flex，換句話說小於該尺寸，div就會以block展現，
+    表現方式就會以一個div一個div層層堆疊，符合手機排版方式
+    */
+    .container-1 {
+        display: flex;
+        
+        /* align-items: stretch(default value) */
+        /* align-items: flex-start; */
+        flex-direction: row;
+        background-color:lightblue;
+    }
+    
+    .container-2 {
+        display: flex;
+        /* justify-content: space-evenly; */
+        /* align-items: baseline; */
+        background-color:coral;
+    }
+}
+
+
+/* .container-1 是所有box的父元素 */
+
+
+.container-1 div, .container-2 div{
+    border:1px black solid;
+    padding: 10px;
+}
+
+.box-1 {
+    flex: 1;
+
+    /* 改變元素排列順序 */
+    order: 2;
+}
+
+.box-2 {
+    flex: 2;
+    order:1;
+}
+
+.box-3 {
+    flex: 1;
+    order:3;
+}
+
+.container-2-box {
+    /* 依舊不太懂flex-basis的用法 */
+    flex-basis: 27%;
+    /* width: 27%; */
+}
