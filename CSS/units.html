@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Units</title>
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        :root {
+            font-size: 16px;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+            /* 若沒有透過:root將html頁面的預設字體大小設為16px，
+            1rem在chrome的解析下會是20px。
+            這個預設數值會受到不同瀏覽器以及字型影響
+            所以最好還是在html或是:root設定字體大小，再來使用rem單位 */
+            font-size: 1rem;
+            overflow-y: hidden;
+        }
+
+        /* .
+        container 是 .title & li的共享父元素，
+        代表說，我只要在作為父元素的container上設置font-size，
+        並將其子元素的單位值設為em，就可以讓子元素的大小依父元素來改變。
+        比方說.container的font-size為26px，.title為1.2em，代表為31.2px。
+        em方便用於子元素上，讓其大小跟隨父元素改變。
+         */
+        .container {
+            background-color: orange;
+            font-size: 26px;
+            border-radius: 8px;
+        }
+
+        .unit-option-container {
+            padding-left: 0;
+            text-align: center;
+        }
+
+        .unit-option-container>li {
+            display: inline-block;
+        }
+
+        .unit-option {
+            float: left;
+            padding: 4px 8px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .unit-option:active, .unit-option:hover {
+            color: white;
+            background-color: rgba(0, 0 ,0, 0.5 );
+            border-radius: 4px;
+        }
+
+        .title {
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        ol > li {
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="unit-option-container">
+            <!-- 可以透過data-屬性給予html元素任意"值"！ -->
+            <li><a class="unit-option" href="#" data-size="26px">大</a></li>
+            <li><a class="unit-option" href="#" data-size="22px">中</a></li>
+            <li><a class="unit-option" href="#" data-size="20px">小</a></li>
+        </ul>
+        <h2 class="title">莊子名言</h2>
+        <ol>
+            <li>天地與我並生，萬物與我合一。</li>
+            <li>君子之交淡若水，小人之交甘若醴。</li>
+            <li>人生天地之間，若白駒過隙，忽然而已。</li>
+            <li>不以物挫志。</li>
+            <li>夫哀莫大於心死，而人死亦次之。</li>
+        </ol>
+    </div>
+
+    <script>
+        const optionContainer = document.querySelector('.unit-option-container');
+        optionContainer.onclick = changeFontSize;
+
+        function changeFontSize(e) {
+            if(e.target.classList.contains('unit-option') === true) {
+                // 取得data-set的值
+                let fontSize = e.target.dataset.size;
+                console.log(fontSize);
+                document.querySelector('.container').style.fontSize = fontSize;
+            }
+        }
+    </script>
+</body>
+
+</html>
