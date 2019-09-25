@@ -1,3 +1,4 @@
+// f
 //Re-Form The Word
 function getWord(left, right) {
     let word = left + right;
