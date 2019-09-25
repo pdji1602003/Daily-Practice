@@ -51,12 +51,12 @@
             background-color: aquamarine;
         }
 
-        /* 選取最為緊鄰的兄弟，元素間沒有層級關係 */
+        /* 選取最為緊鄰的兄弟(只會選取到一個p)，元素間沒有層級關係 */
         .container + p {
             background-color: blueviolet;
         }
 
-        /* 選取全部的兄弟，元素間沒有層級關係 */
+        /* 選取全部的兄弟(選取到作為container兄弟的全部p)，元素間沒有層級關係 */
         .container ~ p {
             background-color: blanchedalmond;
         }

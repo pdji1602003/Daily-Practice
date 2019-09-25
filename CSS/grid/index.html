@@ -15,10 +15,10 @@
         .wrapper {
             display: grid;
             /* fr stands for fraction，增加fr數字就是增加該部分的寬度 */
-            /* grid-template-columns: 1fr 2fr 1fr; */
+            /* grid-template-columns: 1fr 2fr 1fr; =>將畫面切分成3欄，中間那欄佔50% */
 
             /* 一組1fr+2fr重複4次 */
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr 2fr); /*想想看，這樣畫面會被切成幾個column呢？答案是8個，而不是12個哦！ */
             grid-gap:1em;
 
             grid-auto-rows: 100px;
