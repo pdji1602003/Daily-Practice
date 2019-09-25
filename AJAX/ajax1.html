@@ -18,7 +18,7 @@
         // Create Event Listener
         document.getElementById('button').addEventListener('click', loadText);
 
-        function loadText(){
+        function loadText() {
             //Create XHR object
             let xhr = new XMLHttpRequest();
 
@@ -36,19 +36,19 @@
             //     console.log('readyState: ', xhr.readyState);
             //     console.log('Your request is being processed!');
             // }
-            
+
             //When something goes wrong
-            xhr.onerror = function(){
+            xhr.onerror = function () {
                 console.log('request error');
             }
 
 
-            xhr.onload = function(){
+            xhr.onload = function () {
                 //if(xhr.status == 200) 同一個function裡可以使用this
-                if(this.status == 200){
+                if (this.status == 200) {
                     // console.log(this.responseText);
                     document.getElementById('text').innerText = this.responseText;
-                } else if ( this.status === 404 ){
+                } else if (this.status === 404) {
                     document.getElementById('text').innerText = 'File Not Found';
                 }
             }
@@ -66,9 +66,9 @@
         }
 
         // server端負責提供HTTP status，readyState則是由user agent提供的。
-        
 
-        /* 
+
+        /*
         readyState Value 這邊講的readyState針對的是request，指的是request的處理狀態
             0:request not inititialised
             1:server connection established
@@ -77,7 +77,7 @@
             4:request finished and response is ready
         */
 
-        /* 
+        /*
         HTTP statuses
             200:"Okay"
             403:"Forbidden"

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Pseudo Element</title>
+	<style>
+		ul {
+			list-style: none;
+			padding-left: 20px;
+		}
+
+		.icon:before {
+			content: " ";
+			background: url('img/14.jpg') left center no-repeat;
+			background-size: contain;
+			padding-left: 92px;
+		}
+
+		@media screen and (max-width: 480px) {
+			.icon:before {
+				height: 28px;
+				display: block;
+				margin-bottom: 5px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!--HTML代码-->
+	<ul>
+		<li class="icon">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, itaque.</li>
+	</ul>
+
+</body>
+
+</html>

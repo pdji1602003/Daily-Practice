@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +10,20 @@
         body {
             box-sizing: border-box;
         }
+
         .user {
             display: flex;
             background-color: #f4f4f4;
             padding: 10px;
             margin-bottom: 10px;
-        } 
+        }
+
         .user ul {
             list-style: none;
         }
     </style>
 </head>
+
 <body>
     <button id="button">Load GitHub Users</button>
     <br><br>
@@ -30,27 +34,27 @@
         document.getElementById('button').addEventListener('click', loadUsers);
 
         // Load GitHub users
-        function loadUsers(){
+        function loadUsers() {
             let xhr = new XMLHttpRequest();
             xhr.open('GET', 'https://api.github.com/users', true);
-            xhr.onload = function(){
-                if(this.status === 200){
+            xhr.onload = function () {
+                if (this.status === 200) {
                     // 轉換成js可操作的obj
                     console.log(this.responseText);
                     //把返回值轉換成物件並編碼？
                     let users = JSON.parse(this.responseText);
                     console.log(users);
                     let output = '';
-                    for(let i in users){
-                        
-                        output += 
-                        '<div class="user">'+
-                            '<img src="'+users[i].avatar_url+'"width=70 height="70">'+
-                            '<ul>'+
-                                '<li>ID:'+users[i].id+'</li>'+
-                                '<li>LOGIN:'+users[i].login+'</li>'+
-                            '</ul>'+
-                        '</div>'    
+                    for (let i in users) {
+
+                        output +=
+                            '<div class="user">' +
+                            '<img src="' + users[i].avatar_url + '"width=70 height="70">' +
+                            '<ul>' +
+                            '<li>ID:' + users[i].id + '</li>' +
+                            '<li>LOGIN:' + users[i].login + '</li>' +
+                            '</ul>' +
+                            '</div>'
                     }
                     document.getElementById('users').innerHTML = output;
                 }
@@ -59,4 +63,5 @@
         }
     </script>
 </body>
+
 </html>
