@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Pacifico|Oxygen);
+
+:root{
+    --shadow:1.5px 5px 4px 0px rgba(0, 0, 0, 0.2);/* css variable */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    min-height: 100vh; 
+    margin: 0;
+    padding: 0;
+    font-family: Pacifico, sans-serif;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.calc-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 320px;
+    padding: 2%;
+    background-color: #f85b51;
+    border-radius: 15px;
+    box-shadow:var(--shadow);
+}
+
+.calc-title{
+    margin-bottom: .1em;
+}
+
+.calc-screen {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 1rem;
+    text-align: right;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow:var(--shadow);
+}
+
+/* .calc-numbers > .calc-row > .calc-btn  */
+.calc-numbers {
+    width: 100%;
+}
+
+.calc-row {   
+    width: 100%;
+    overflow: hidden;/* clear child elements float */
+}
+
+.calc-btn {
+    width: calc(100% / 5 - 8px); /* calc可以用來計算數值，8px是用來offset margin-right的8px */
+    padding: 6px 6px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    float: left;
+    text-align: center;
+    font-size: .8rem;
+    font-weight: 500;
+    border-radius: 6px;
+    box-shadow:var(--shadow);
+}
+
+.calc-btn.span-two {
+    width: calc(40% - 8px);
+}
+
+.calc-row > .calc-btn:last-child{
+    margin-right: 0;
+}
