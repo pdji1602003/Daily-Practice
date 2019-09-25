@@ -293,15 +293,15 @@ form.addEventListener('paste', runEvent);
 
 // box.addEventListener('mousemove', runEvent);
 
-function runEvent(e){
+function runEvent(e) {
   // console.log('Event Type ' + e.type);
 
   // insert html元素進去，並展現x軸與y軸的相對於box的值
   // output.innerHTML = '<h3>MouseX:' + e.offsetX +'</h3><h3>MouseY: ' +e.offsetY + '</h3>';  
-  
+
   //rgb(red, gree, blue)
   // document.body.style.backgroundColor = "rgb("+e.offsetX+","+e.offsetY+", 40)";
-  
+
   // 這邊要注意不能直接寫form.value，而是應該寫e.target.value
   // console.log(form.value);
   console.log(e.target.value);

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON</title>
+</head>
+
+<body>
+    <ul id="people"></ul>
+    <script>
+        /* JSON格式：
+        json不支援function，所以程式跑到email那行會出錯
+        可以使用線上json validator檢查格式是否正確https://jsonlint.com/
+        email:function(){
+                return 'pdji1602003@gmail.com';
+            }
+        JSON可接受的數據型態：
+        1.string
+        2.number
+        3.object(JSON object)
+        4.array
+        5.boolean(特別注意)
+        6.null
+        
+        JSON不接受的數據型態
+        1. function
+        2. date
+        3. undefined
+        */
+
+        let person = {
+            name: 'Linyin',
+            age: 27,
+            address: {
+                street: "5 main str",
+                city: "Boston"
+            },
+            children: ["Brianna", "Nicolas"]
+        }
+        console.log(person.children[0]);
+        // 將person轉成JSON格式
+        person = JSON.stringify(person);
+
+
+        // 將符合JSON格式的person又轉回成object(這樣才可以取得它的值)
+        person = JSON.parse(person);
+
+
+        /* 若JSON.parse解析源生自array的JSON檔案，則parse後的返回結果會是array(有時甚至會幫你的數據編碼)，而非js object。*/
+        let people = [
+            {
+                name: 'Brad',
+                age: 20
+            },
+            {
+                name: 'Musk',
+                age: 40
+            },
+            {
+                name: 'Huang',
+                age: 27
+            }
+        ]
+
+        let output = '';
+        // console.log(people[1].age);
+        for(let i in people){
+            // console.log(people[i].name);
+            output += '<li>'+people[i].name +'</li>';
+        }
+        document.getElementById('people').innerHTML = output;
+
+    </script>
+
+</body>
+
+</html>

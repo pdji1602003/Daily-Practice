@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax 2 - Local JSON</title>
+</head>
+
+<body>
+    <button id="button1">Get User</button>
+    <button id="button2">Get Users</button>
+    <br><br>
+    <h2>User</h2>
+    <div id="user"></div>
+    <h2>Users</h2>
+    <div id="users"></div>
+
+
+    <script>
+        document.getElementById('button1').addEventListener('click', loadUser);
+        document.getElementById('button2').addEventListener('click', loadUsers);
+
+
+        function loadUser() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'user.json', true);
+            xhr.onload = function () {
+                if (this.status === 200) {
+
+                    // let user = this.responseText; 
+                    // console.log(user.name); => undefined
+
+                    //json需要以JSON方法parse，將回傳資料解析成object資料型態
+                    let user = JSON.parse(this.responseText);
+                    console.log(user.name);
+                    // document.getElementById('user').innerHTML = this.responseText;
+
+                    // 不太懂這邊將output設成空字串的做法
+                    let output = "";
+                    // +本身是串聯字串嗎？
+                    output += '<ul>' +
+                        '<li>ID: ' + user.id + '</li>' +
+                        '<li>Name: ' + user.name + '</li>' +
+                        '<li>Email: ' + user.email + '</li>' +
+                        '</ul>'
+                    console.log(typeof output);
+                    document.getElementById('user').innerHTML = output;
+                }
+            }
+            xhr.send();
+        }
+
+        function loadUsers() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'users.json', true);
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    let users = JSON.parse(this.responseText);
+                    console.log(users[1].name);
+                    let output = '';
+                    for (let i = 0; i < users.length; i++) {
+                        output += '<ul>' +
+                            '<li>ID: ' + users[i].id + '</li>' +
+                            '<li>Name: ' + users[i].name + '</li>' +
+                            '<li>Email: ' + users[i].email + '</li>' +
+                            '</ul>'
+                    }
+                    /*
+                    for(let i in users){ // i指的是object裡的key
+                        output += '<ul>' +
+                        '<li>ID: '+users[i].id+'</li>'+
+                        '<li>Name: '+users[i].name+'</li>'+
+                        '<li>Email: '+users[i].email+'</li>'+
+                        '</ul>'
+                    }
+                    */
+                    console.log(output);
+                    document.getElementById('users').innerHTML = output;
+                }
+            }
+            xhr.send();
+        }
+
+    </script>
+</body>
+
+</html>

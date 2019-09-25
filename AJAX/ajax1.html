@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax 1 - Text File</title>
+</head>
+
+<body>
+    <button id="button">Get Text File</button>
+    <br><br>
+    <div id="text"></div>
+
+
+    <script>
+        // Create Event Listener
+        document.getElementById('button').addEventListener('click', loadText);
+
+        function loadText(){
+            //Create XHR object
+            let xhr = new XMLHttpRequest();
+
+            /* 
+            我假設透過open向server發出request，那server是怎麼明白你想要request什麼東西呢？ 
+            就是透過open的參數，跟server表明我現在想要拿取('GET')一個file('sample.txt')且是async(true)
+            */
+
+            // Open - type, file/url, async
+            xhr.open('GET', 'sample1.txt', true);
+            console.log('readyState: ', xhr.readyState);
+
+            // Optional - used for loaders
+            // xhr.onprogress = function(){
+            //     console.log('readyState: ', xhr.readyState);
+            //     console.log('Your request is being processed!');
+            // }
+            
+            //When something goes wrong
+            xhr.onerror = function(){
+                console.log('request error');
+            }
+
+
+            xhr.onload = function(){
+                //if(xhr.status == 200) 同一個function裡可以使用this
+                if(this.status == 200){
+                    // console.log(this.responseText);
+                    document.getElementById('text').innerText = this.responseText;
+                } else if ( this.status === 404 ){
+                    document.getElementById('text').innerText = 'File Not Found';
+                }
+            }
+
+            // onreadystatechange與onload最大的不同是，我們必須自己去檢查request的狀態
+            // xhr.onreadystatechange = function(){
+            //     if(this.readyState === 4 && this.status === 200){
+            //         // console.log(this.responseText);
+            //     }
+            // }
+
+
+            //Send request
+            xhr.send();
+        }
+
+        // server端負責提供HTTP status，readyState則是由user agent提供的。
+        
+
+        /* 
+        readyState Value 這邊講的readyState針對的是request，指的是request的處理狀態
+            0:request not inititialised
+            1:server connection established
+            2:request received
+            3:processing request
+            4:request finished and response is ready
+        */
+
+        /* 
+        HTTP statuses
+            200:"Okay"
+            403:"Forbidden"
+            404:"Not found"
+        */
+
+    </script>
+</body>
+
+</html>
