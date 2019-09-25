@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Calculator</title>
+</head>
+
+<body>
+	<!--HTML代码-->
+
+	<form>
+		value01:<input type="text" id="value1">
+		value02:<input type="text" id="value2">
+		operator:
+		<select id="operator">
+			<option value="add">Add</option>
+			<option value="sub">Subtract</option>
+			<option value="mul">Multiply</option>
+			<option value="div">Divide</option>
+		</select>
+		<button type="button" onclick="calc()">Calculate</button>
+	</form>
+	<div id="result"></div>
+
+
+	
+	<script>
+		//計算機習題
+		function calc() {
+			/* 
+			不要忘記input取得值為string，需要轉成number才能加以計算
+			也可以用Number(document.querySelector('#value1').value)，
+			使用parseInt的好處是，當使用者輸入像4px這種非完全是數字的值是，運算不會失敗。
+			*/
+			var a = parseInt(document.querySelector('#value1').value);
+			var b = parseInt(document.querySelector('#value2').value);
+			var c = document.querySelector("#operator").value;
+			var calculator;
+
+			if (c == "add") {
+				calculator = a + b;
+			} else if (c == "sub") {
+				calculator = a - b;
+			} else if (c == "mul") {
+				calculator = a * b;
+			} else {
+				calculator = a / b;
+			}
+			console.log(calculator);
+			document.querySelector("#result").innerHTML = calculator;
+		}
+	</script>
+
+</body>
+
+</html>

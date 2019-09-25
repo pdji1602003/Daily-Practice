@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>複選方塊與單選圓鈕</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+    /* 以下寫法可以選到除了第一個之外的.checkbox-inline */
+    .checkbox-inline + .checkbox-inline { 
+        margin-left: 0;
+    }
+    /* em為當前元素的font-size大小 */
+    .checkbox-inline {
+        margin-right: 1em;
+    }
+
+</style>
+
+<body>
+    <main role="main" id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                    <form action="">
+                        <h2>您的興趣</h2>
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox">打球
+                        </label>
+
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox">睡覺
+                        </label>
+
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox">釣魚
+                        </label>
+
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox">寫CSS
+                        </label>
+
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox">看電影
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox">打球
+                        </label>
+
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox">睡覺
+                        </label>
+
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox">釣魚
+                        </label>
+
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox">寫CSS
+                        </label>
+
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox">看電影
+                        </label>
+
+                        <h2>您的年齡</h2>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="age-range">11~20歲
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="age-range">21~30歲
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="age-range">31~40歲
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="age-range">41~50歲
+                            </label>
+                        </div>
+                        <p class="text-center">
+                            <a href="" class="btn btn-info">登入</a>
+                            <a href="" class="btn btn-default">取消</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </main>
+</body>
+
+</html>

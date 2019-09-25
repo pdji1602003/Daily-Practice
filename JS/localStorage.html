@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Local Storage</title>
+
+</head>
+
+<body>
+    <p>請打開console面板 > application > Local Storage</p>
+    
+    <script>
+        localStorage.setItem('name', 'Phil'); //在Local Storage創建數據(以'key', 'value'型式)
+        const item01 = localStorage.getItem('name');//取得我們已在Local Storage儲存的資料(以key取得value)
+        sessionStorage.setItem('name', 'Maggie'); 
+        // localStorage.removeItem('name'); //移除Local Storage的數據
+        console.log(item01);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Navbar</title>
+    <style>
+        html {
+            font-size: 14px;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #333;
+            position: fixed;
+            top: -60px; /* 在畫面為滾動時，藉由將位置設置-60px將nav推出頁面外 */
+            width: 100%;
+            transition: top 0.3s;/* 過場效果，這行的意思是針對'top'屬性的變化，過場時間為0.3秒*/
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 20px 10px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #ccc;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <a href="#">Home</a>
+        <a href="#">News</a>
+        <a href="#">Contact</a>
+    </nav>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nam fugiat atque aspernatur modi voluptatum ex
+        in! Pariatur cumque minus, dolorem expedita dolores vitae velit iusto? Eos ullam sunt totam quas, facilis a
+        nisi, tempora id ad debitis quasi commodi fugiat modi itaque magnam iure unde eveniet provident temporibus, non
+        ex molestias dolorum perferendis pariatur? Praesentium laboriosam est, nobis delectus accusantium laudantium
+        enim, optio quam accusamus inventore minima nemo qui id voluptatem expedita omnis earum! Optio autem, provident,
+        possimus nisi harum voluptatem eveniet architecto consequuntur magni nemo tempora fuga soluta. Blanditiis
+        molestias, repellendus accusantium culpa exercitationem facilis minima nobis dignissimos! Nostrum quis
+        dignissimos architecto autem accusamus ea esse reiciendis, porro vitae consequatur in ab saepe mollitia
+        delectus? Officia necessitatibus unde hic ex quam sed. Quod quisquam totam enim possimus repellendus incidunt
+        sint eius! Adipisci sed ducimus aperiam molestias blanditiis voluptates praesentium quibusdam repellendus magnam
+        soluta fugiat delectus quas impedit aut, non omnis maiores necessitatibus vel eos esse obcaecati cumque rerum?
+        Dolor, error consectetur molestias ipsam eius similique accusamus mollitia tempore repellat porro? Vero,
+        blanditiis! A sapiente reprehenderit excepturi cum accusamus dicta, tempora alias ex perspiciatis eligendi
+        repudiandae odit exercitationem distinctio! Soluta suscipit beatae, consectetur minus voluptate molestias ab
+        nihil consequuntur ipsam, dignissimos quisquam a tenetur numquam perspiciatis porro debitis. Eos animi
+        architecto accusamus maxime natus similique nisi dolorum omnis consequatur praesentium tenetur, vero reiciendis
+        magnam. Asperiores eos totam minus! Voluptate inventore, ipsum sint facilis natus laboriosam libero aperiam ipsa
+        accusantium reprehenderit autem? Consequuntur molestias sunt laborum aperiam autem aliquam aliquid provident ut,
+        inventore obcaecati excepturi iure, similique dignissimos nihil ipsum incidunt nobis alias recusandae odio
+        commodi iusto! Maxime velit voluptatum distinctio necessitatibus quia at quidem, laborum cumque magnam inventore
+        commodi asperiores rerum quas perspiciatis dolores qui id maiores sequi quis consectetur aut dolorum ullam!
+        Velit, accusantium natus optio excepturi deserunt ex neque eum soluta. Officiis aliquid nemo, ea labore sed
+        commodi dolore explicabo! Itaque odit tenetur ullam eum, dolor vel officiis expedita eius officia dolores
+        reprehenderit suscipit perferendis commodi, libero, eligendi mollitia quo magni nobis! Commodi omnis minus
+        deserunt vitae laborum ipsum dicta voluptatem qui! Sed alias architecto accusamus praesentium commodi quas
+        mollitia laborum ratione quisquam inventore iusto iure aspernatur dicta nobis quod dolore repellat ea similique
+        impedit, eligendi sunt magnam atque tempore eaque! Voluptas vitae, eos ex doloribus impedit ratione sapiente,
+        non, quia porro fugit repellendus iusto nisi! Nulla maxime delectus porro sed eum explicabo, soluta quod magni
+        sapiente veritatis aut eaque provident commodi placeat, enim aperiam, perspiciatis rem ut voluptatem illo
+        nostrum deleniti optio consectetur nisi! Doloremque sed veniam sint molestias nulla praesentium at similique
+        delectus. Incidunt obcaecati praesentium, corporis facere similique debitis tenetur. Laboriosam cum quos sunt
+        magni repudiandae architecto nesciunt suscipit quasi minus earum aperiam veritatis cupiditate explicabo, rem
+        amet error dicta temporibus, modi provident id, magnam ex. Similique deserunt obcaecati porro animi consequuntur
+        adipisci tenetur, in ratione nemo, eum quas sit. Eligendi, labore exercitationem natus sed ab, dignissimos
+        reprehenderit adipisci eaque blanditiis provident perferendis totam tempora asperiores quae debitis nobis
+        aperiam. Tempora et in corporis.</p>
+
+</body>
+<script>
+    // When the user scrolls down 20px from the top of the document, slide down the navbar
+    // When the user scrolls to the top of the page, slide up the navbar (60px out of the top view)
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        // 滾條距離body頂部20px(scrollTop是body的屬性，代表他計算的距離是以body為依歸) 或是距離整個html頁面頂部20px時
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            //將nav這個元素的top屬性設為0
+            document.getElementById('nav').style.top = '0';
+        } else {
+            //若不滿足上述條件，則將nav這個元素的top屬性設為-60px
+            document.getElementById('nav').style.top = '-60px';
+        }
+    } 
+</script>
+
+</html>

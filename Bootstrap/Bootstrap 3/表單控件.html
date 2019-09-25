@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>複選方塊與單選圓鈕</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+    .checkbox-inline+.checkbox-inline {
+        margin-left: 0;
+    }
+
+    .checkbox-inline {
+        margin-right: 1em;
+    }
+    .select-control {
+        /* 先使用appearance將預設的select樣式移除，在使用其他css客製化 */
+        appearance:none;
+        -moz-appearance:none; /* Firefox */
+        -webkit-appearance:none; /* Safari 和 Chrome */
+        border-radius: 8px;
+    }
+</style>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                    <h2>您的興趣</h2>
+                    <!-- 
+                        之所以會在label在設置checkbox-inline，而不以div包覆以下元素，
+                        再在將checkbox-inline設置在div上，
+                        是因為div本身是block-level元素，
+                        預期將div轉變成inline元素不是很多此一舉嗎？ 
+                    -->
+                    <label class="checkbox-inline">
+                        <input type="checkbox">游泳
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox">畫畫
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox">與人交談
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox">畫畫
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox">與人交談
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox">與人交談
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox">畫畫
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox">與人交談
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox">與人交談
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox">畫畫
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox">與人交談
+                    </label>
+                    <h2>您的年齡</h2>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="radioOpt" value="選擇1" id="選擇1" checked>選擇1
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="radioOpt" value="選擇2" id="選擇2">選擇2
+                        </label>
+                    </div>
+                    <div class="radio disabled">
+                        <label>
+                            <input type="radio" name="radioOpt" value="選擇3" id="選擇3" disabled>選擇3
+                        </label>
+                    </div>
+                    <h2>Select控件</h2>
+                    <select name="" id="" class="form-control select-control">
+                        <optgroup label="貓科">
+                            <option value="貓咪">貓咪</option>
+                            <option value="老虎">老虎</option>
+                        </optgroup>
+                        <optgroup label="犬科">
+                            <option value="柯基">柯基</option>
+                            <option value="米克斯">米克斯</option>
+                        </optgroup>
+                        <optgroup label="無法分類">
+                            <option value="圈圈">圈圈</option>
+                            <option value="叉叉">叉叉</option>
+                        </optgroup>
+                    </select>
+                    <h2>按鈕</h2>
+                    <p class="text-center">
+                        <button class="btn btn-info">確定</button>
+                        <button class="btn btn-default">取消</button>
+                    </p>
+                    <h2>Static Control</h2>
+                    <form action="" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">email@example.com</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="inputPassword" placeholder="password">
+                            </div>
+                        </div>
+                    </form>
+                    <form action="" class="form-inline">
+                        <div class="form-group">
+                            <label for="" class="sr-only">Email</label>
+                            <p class="form-control-static">email@example.come</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label sr-only">
+                                Password
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" placeholder="Password">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-default" disabled>Confirm Identity</button>
+                    </form>
+                    <h2>禁用狀態</h2>
+                    <input type="text" class="form-control" placeholder="Disabled input here..." disabled>
+                    <form>
+                        <fieldset disabled>
+                           <div class="form-group">
+                               <label for="textInput">Disabled input</label>
+                               <input type="text" class="form-control" id="textInput">
+                           </div>
+                           <div class="form-group">
+                               <label for="textSelect">Disabled select menu</label>
+                               <select name="textSelect01" class="form-control" id="textSelect">
+                                   <option> Disabled text</option>
+                               </select>
+                           </div>
+                           <div class="checkbox">
+                               <label>
+                                    <input type="checkbox">Can't check this
+                               </label>
+                           </div>
+                           <button type="submit" class="btn btn-primary">Submit</button>
+                        </fieldset>
+                    </form>
+                    <h2>校驗狀態</h2>
+                    <form>
+                        <div class="form-group has-success">
+                            <label class="control-label" for="successInput">Input with success</label><!--如果label元素上沒有添加control-label屬性，則has-success效果無法影響到label -->
+                            <input type="text" class="form-control" id="sucessInput">
+                            <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                        </div>
+                        <div class="form-group has-warning">
+                            <label class="control-label" for="warningInput">Input with warning</label>
+                            <input type="text" class="form-control" id="warningInput">
+                        </div>
+                        <div class="form-group has-error">
+                            <label class="control-label" for="errorInput">Input with warning</label>
+                            <input type="text" class="form-control" id="errorInput">
+                        </div>
+                        <div class="has-success">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="successCheckbox" value="option1">Checkbox with success
+                                </label>
+                            </div>
+                        </div>
+                        <div class="has-warning">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="warningCheckbox" value="option1">Checkbox with warning
+                                </label>
+                            </div>
+                        </div>
+                        <div class="has-error">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="errorCheckbox" value="option1">Checkbox with error
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

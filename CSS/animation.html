@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS - Animation</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: azure;
+        }
+
+        .ball-container {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .ball {
+            width: 200px;
+            height: 200px;
+            background-color: powderblue;
+            border-radius: 50%;
+            box-shadow: -8px 8px 10px 4px rgba(103, 158, 167, 0.698);
+            animation: jumpingBall 1s ease-in-out infinite;
+        }
+
+        /* 
+        創建一個animation，就像是create a function的邏輯
+        once an animation is created, it can be used anywhere. 
+        ex. 用在element:hover {
+             animation: jumpingBall 1s ease-in-out infinite;
+        }
+        */
+        @keyframes jumpingBall {
+            /* 動畫在初始狀態 */
+            0% {
+                width: 80px;
+                height: 80px;
+            }
+
+            50% {
+                width: 200px;
+                height: 200px;
+            }
+
+            /* 動畫在完成狀態 */
+            100% {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ball-container">
+        <div class="ball"></div>
+    </div>
+</body>
+
+</html>
