@@ -5,7 +5,8 @@
     2.只能用操作符"new"來執行。(有別於一般常規函數只需使用圓括弧即可執行)
 */
 function User (name) {
-    this.name = name;//把這個this理解成我們要創建的物件
+    //把這個this理解成我們要創建的物件
+    this.name = name;
     this.admin = false;
 }
 
@@ -13,7 +14,7 @@ let user1 = new User("Jack");
 
 console.log(user1.name);
 console.log(user1.admin);
-console.log(Object.values(user1));//Jack, false
+console.log(Object.values(user1));//['Jack', false]
 
 //以上 new User(...)執行時，相同於做了以下事情
 
