@@ -1,0 +1,62 @@
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+} 
+
+:root {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  font-family: -apple-system, BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,Arial,sans-serif;
+  background: linear-gradient(to right,#516395, #614385);
+  overflow-y: hidden;
+}
+
+.container {
+  padding: 1em;
+  margin: 1em;
+  width: 80%;
+  max-width: 800px;
+  font-size: 1.5rem; /* 1.5*16px = 24px */
+  background-color: rgba(255, 255, 255, .8);
+  border-radius: 1em;
+}
+
+.btn-grid {
+  margin-top:1em; /* 1.5*16px = 24px */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-column-gap: 8px; 
+  grid-row-gap: 8px; */
+  gap:8px;
+}
+
+.btn {
+  padding: 10px;
+  font-size: .8em;
+  font-weight: 500;
+  color: #516395;
+  border-radius: .6em;
+}
+
+.btn:active, .btn:hover {
+  color:white;
+  background-color:  #5163959d;
+}
+
+/* 決定按下按鈕後的btn狀態，若有設定背景顏色，
+則一經點按，即使滑鼠移開btn，背景顏色也不會自動消除 */
+.btn:focus { 
+  /* btn外層光圈，為瀏覽器預設效果 */
+  outline:none;
+}
