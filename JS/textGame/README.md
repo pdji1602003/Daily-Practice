@@ -1,4 +1,4 @@
-#Disclaimer
+# Disclaimer
 
 I spotted this [pen](https://codepen.io/WebDevSimplified/pen/xoKZbd) on CodePen,
 so I decided to code up a quiz website similar to this pen but restyle it. 
