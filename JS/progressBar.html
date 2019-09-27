@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Progress Bar</title>
+
+    <style>
+        #progress-container {
+            position: relative;
+            width: 40%;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+
+        }
+
+        #progress-bar {
+            position: absolute;
+            width: 0;
+            height: 20px;
+            background-color: #C71585;
+            border-radius: 4px;
+
+        }
+
+        #button {
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        #button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h2>JavaScript Progress Bar</h2>
+
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <button id="button">Click me!</button>
+
+
+    <script>
+        'use strict'
+        const buttonElement = document.getElementById('button');
+
+        buttonElement.onclick = move;//按下click時即會execute move function
+
+        function move() {
+            const progressBar = document.getElementById('progress-bar');
+            let width = 0;
+
+            //透過以下方法是獲取到設在html元素上的inline style屬性，
+            //因為我的style是寫在<head>裡(internal)，根本沒有直接設在html元素上
+            //所以返回結果為空字串 <div id="progress-bar">
+            let style = progressBar.style.width; // ""(空字串) 
+            
+            /* 
+            setInterval返回值為一number，每次執行的返回值都不同，可視為id
+            在chrome的返回值是由1開始逐次遞增。
+            */
+            let id = setInterval(render, 30);
+
+            function render() {
+                //因為它相當於 <div id="progress-bar" style="width:100%;">
+                if (progressBar.style.width === '100%') {
+                    console.log(progressBar.style.width);
+                    clearInterval(id);
+                } else {
+                    width++;
+                    console.log(width);
+                    progressBar.style.width = width + '%';
+                }
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>
