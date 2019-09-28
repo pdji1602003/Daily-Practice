@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loader</title>
+    <style>
+        *, 
+        *::before, 
+        *::after {
+            box-sizing: border-box;
+        } 
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-y:hidden; 
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .loader {
+            display: block;
+            width: 200px;
+            height: 200px;
+            border: 25px solid #f3f3f3;
+            border-top: 25px solid #3498;
+            /* 
+            為何border-radius：50%可以將正方形轉換成圓形？
+            border-radius 50%指的是在x軸上的半徑相等於container 50%的寬
+            y軸上的半徑相等於container 50%的高，剛好會形成一個圓。
+            Reference:https://stackoverflow.com/questions/29966499/border-radius-in-percentage-and-pixels-px-or-em
+            */
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .text-box {
+            display: none;
+            /* 一定要設置position屬性，才能操縱元素的bottom...等屬性 */
+            position: relative;
+            bottom: 20px;
+            text-align: center;
+            animation: animateBottom 1s;
+        }
+
+        @keyframes animateBottom {
+            from {
+                opacity: 0;
+                bottom: -100px;
+            }
+
+            to {
+                opacity: 1;
+                bottom:20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="loader" id="loader"></div>
+        <div class="text-box" id="text-box">
+            <h2>Ta-da!</h2>
+            <p>Welcome to my website!</p>
+        </div>
+    </div>
+
+    <script>
+        let bodyElement = document.body;
+        // debugger
+        console.log(bodyElement);
+        // bodyElement在onload事件後調用setTimeout這個function
+        //setTimeout在3000毫秒後調用transition這function
+        bodyElement.onload = setTimeout(transition, 3000);
+
+        function transition(){
+            document.getElementById('loader').style.setProperty('display', 'none');
+            document.getElementById('text-box').style.setProperty('display', 'block');
+        }
+    </script>
+</body>
+
+</html>
