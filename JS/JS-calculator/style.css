@@ -1,0 +1,62 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+    font-weight: normal;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows:minmax(120px, auto) repeat(5, 100px); 
+}
+
+/* .calculator-grid button 跟這樣的寫法在表現上有什麼差別呢？  */
+.calculator-grid > button {
+    cursor:pointer;
+    font-size: 2rem;
+    border: 1px solid #fff;
+    outline:none;
+    background: rgba(255, 255, 255, .75);
+}
+
+.calculator-grid > button:hover {
+    background: rgba(255, 255, 255, .9)
+}
+
+.span-two {
+    /* 佔欄數佔兩欄 */
+    grid-column: span 2;
+}
+
+.output {
+    /* 宣告output佔欄數從第一欄到最後一欄 */
+    grid-column:1 / -1;
+    background: rgba(0, 0, 0, .75);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 10px;
+
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.output .previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+
+.output .current-operand {
+    color: #fff;
+    font-size: 2.5rem;
+}
