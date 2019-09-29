@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main role="main" id="main">
+        <nav>
+            <ul>
+                <li><a class="active" href="#">Home</a></li>
+                <li><a href="#">My Channel</a></li>
+                <li><a href="#">My Channel2</a></li>
+                <li><a href="#">My Channel3</a></li>
+            </ul>
+            <ul>
+                <li>
+                    <p>Library</p>
+                </li>
+                <li><a href="#">Historty</a></li>
+                <li><a href="#">Water Later</a></li>
+                <li><a href="#">Purchases</a></li>
+                <li><a href="#">jQuery</a></li>
+            </ul>
+        </nav>
+    </main>
+    <script>
+        $(document).ready(function () {
+            $('#menu-toggle').click(function () {
+                $('#side-nav').toggle(1000, function () { //1000毫秒=1秒 以及 callback feature
+                    alert('Hi, there!');
+                });
+                $('#side-nav').fadeTo(1000, 0.5, function () { //逐漸消失成__狀態，在此例子中是消失成不透明度0.5的狀態
+                    alert('Hi,there');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

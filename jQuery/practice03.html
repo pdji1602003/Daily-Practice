@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main role="main" id="main">
+        <p id="p1">jQuery樂趣十足！</p>
+        <button id="btn">點擊這裡</button>
+        <br>
+        <button id="hide">Hide</button>
+        <p id="p2">This is a paragraph with little content.</p>
+        <p id="show-txt">這是段落中的<b>粗體</b>文字</p>
+        <button id="btn-show-txt">顯示文本</button>
+        <button id="btn-show-html">顯示html</button>
+        <br>
+        <br>
+        <label for="input-name">姓名：
+            <input type="text" value="米老鼠" id="input-name">
+        </label>
+        <br>
+        <button id="show-value">顯示值</button>
+        <br>
+        <a href="http://www.w3school.com.cn" id="href">W3School.com.cn</a>
+        <br>
+        <button id="show-attr">獲取attribute</button>
+        <p id="p-add-content">這是一些文字</p>
+        <ol id="ol-add-content">
+            <li>項目1</li>
+            <li>項目2</li>
+            <li>項目3</li>
+            <li>項目4</li>
+        </ol>
+        
+        <button id="add-conent">Add more content</button>
+        
+        <br>
+        <button onclick="appendtxt()">Click me!</button>
+    </main>
+    <script>
+        $(document).ready(function () {
+            //jQuery函式鏈接
+            $('#btn').click(function () {
+                // btn在點擊後，先針對#p1的inline style增加color red屬性值，再使其以2000毫秒往上滑動，
+                // 再使其以2000毫秒往下滑動
+                $('#p1').css('color', 'red').slideUp(2000).slideDown(2000);
+            });
+            
+            //jQuery Callback函式：為了確保hide執行完畢後才執行其他函式，可以添加回呼函式
+            //如果您希望在一个涉及动画的函数之后来执行语句，请使用 callback 函数。
+            $('#hide').click(function () {
+                //#hide在點擊後，以1000毫秒隱藏p2，完成以上動作後，再console裡log出指定文字
+                $('#p2').hide(1000, function () {
+                    console.log('This paragraph is now hidden.');
+                })
+            });
+
+
+            $('#btn-show-txt').click(function () {
+                alert('text: ' + $('#show-txt').text());//獲取#show-txt元素的文本
+            });
+            $('#btn-show-html').click(function () {
+                alert('html: ' + $('#show-txt').html());//獲取#show-txt元素的html
+            });
+            $('#show-value').click(function () {
+                alert('value: ' + $('#input-name').val());//獲取input元素的value
+            });
+            $('#show-attr').click(function () {
+                alert('href: ' + $('#href').attr('href')); //獲取<a>元素的href
+            });
+            $('#add-content').click(function () {
+                $('#p-add-content').append('增加一些文字');
+            });
+        });
+
+        function appendtxt() {
+            var txt1 = '<p>Text.</p>';//以html創建新元素
+            var txt2 = $('<p>Text.</p>').text('Text.');//以jQuery創建新元素 在頁面檔上創造p元素後，再在裡頭塞入文本內容
+            var txt3 = document.createElement('p');//以js創建新元素
+            txt3.innerHTML = 'Text.';
+
+            var img01 = '<img src="https://fakeimg.pl/250x100/">'
+            $('body').append(txt1, txt2, txt3, img01);
+        }
+    </script>
+</body>
+
+</html>

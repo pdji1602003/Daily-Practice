@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main role="main" id="main">
+       <p id="p1">Hover me!</p>
+
+       <p id="p2">Click me!</p>
+
+       <p id="p3">Double click me!</p>
+       <p id="p4">Leave me alone!</p>
+       <p>Press [enter]</p>
+       <p id="test">Just for test.</p>
+       
+    </main>
+    <script>
+       $(document).ready(function(){
+            $('#p1').hover(function (){
+                //隱藏自身
+                $(this).hide();
+            });
+
+            $('#p2').click(function (){
+                $(this).hide();
+            });
+
+            $('#p3').dblclick(function(){
+                $(this).hide();
+            });
+
+            $('#p4').mouseout(function(){
+                $(this).hide();
+            });
+       });
+        document.getElementById('test').onclick = function () {
+            alert('clicked');
+        }; //當使用者點擊test之後會做出什麼
+       
+    </script>
+</body>
+
+</html>
