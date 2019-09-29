@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Inline Element</title>
+	<style>
+		#aa {
+			border: 1px solid black;
+			width: 1000px;
+			height: 300px;
+			font-size: 50px;
+			text-align: center;
+		}
+
+		#img01 {
+			width: 100px;
+			background-color: grey;
+			vertical-align: bottom;
+		}
+
+		#span {
+			display: inline-block;
+			width: 250px;
+			height: 100%;
+			background-color: yellow;
+			vertical-align: middle;
+		}
+
+		#img02 {
+			width: 274px;
+			height: 212px;
+			background-color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="aa">
+		writing
+		<img src="./01.jpg" id="img01">
+		<span id="span">行內元素</span>
+		<img src="./02.jpg" id="img02">
+	</div>
+</body>
+
+</html>
