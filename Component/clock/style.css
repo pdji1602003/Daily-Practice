@@ -1,0 +1,108 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+}
+body{
+    background:linear-gradient(to right, hsl(200, 100%, 50%), hsl(175, 100%, 50%));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* 將scrollbar隱藏起來 */
+    overflow: hidden;
+}
+.clock {
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 50%;
+    border: 2px solid black;
+    position: relative;
+
+}
+
+.clock .number {
+    /* 以"--"自訂屬性，此為宣告(0代表 0 deg) 
+    我覺得可以這麼理解：--rotate是你創造的一個變量
+    (就如同你在js裡使用let rotate一樣的道理)
+    然後0就是這個變量所被賦予的值。
+    你在引用的時後，就是夠過引用變量名稱去取得他的值。
+    當然你也可以像在js裡面不斷的改寫這變量的值。
+    */
+    --rotation:0;
+    position: absolute; 
+    /* absolute元素還是會以父元素寬度為依據 */
+    width: 100%; 
+    height: 100%;
+    
+    text-align: center;
+    /* 使用變量去引用rotation的值，which is 0 deg */
+    transform: rotate(var(--rotation));
+    font-size: 1.5rem;
+}
+
+.clock .number1 { --rotation:30deg;}
+.clock .number2 { --rotation:60deg;}
+.clock .number3 { --rotation:90deg;}
+.clock .number4 { --rotation:120deg;}
+.clock .number5 { --rotation:150deg;}
+.clock .number6 { --rotation:180deg;}
+.clock .number7 { --rotation:210deg;}
+.clock .number8 { --rotation:240deg;}
+.clock .number9 { --rotation:270deg;}
+.clock .number10 { --rotation:300deg;}
+.clock .number11 { --rotation:330deg;}
+.clock .number12 { --rotation:360deg;}
+
+.clock .hand {
+    --rotation:0;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+
+    border:1px solid white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    /* 若沒有指定transform-origin的話，預設會以物件自身中心點為旋轉基準點 */
+    transform-origin: bottom;
+    /* 讓指針保持在最上面 */
+    z-index: 10;
+   
+   
+    /* 若沒有加transform屬性，指針會有點偏移，這是因為指針的寬度是以自身左側為基準長寬
+    ，這會使他"看起來"偏移，所以我們會加上transform屬性，使指針往x軸偏移自身寬度50%，
+    這個偏移量剛好可以抵消原先多出來的50％ */
+    /* 使用calc以在css屬性值內做計算 */
+    transform: translateX(-50%) rotate(calc(var(--rotation)*1deg));
+}
+.clock::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 要注意這邊的x軸跟y軸的偏移量為負的哦！若是值設為正的話，會加大偏移量哦！ */
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    
+    width: 15px;
+    height: 15px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.clock .hand.second {
+    width: 3px;
+    height: 45%;
+    background-color:red;
+}
+.clock .hand.minute {
+    width: 7px;
+    height: 40%;
+    background-color:black;
+}
+.clock .hand.hour {
+    width: 10px;
+    height: 35%;
+    background-color:red;
+}
