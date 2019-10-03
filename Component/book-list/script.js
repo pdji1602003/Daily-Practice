@@ -77,41 +77,44 @@ class UI {
 //Store Class:Handles Storage
 class Store {
 	//取得儲存在localStorage的book資料，以展示在頁面上
-  static getBooks() {
-    let books;
-    if(localStorage.getItem('books') === null) {
-      books = [];
-    } else {
+	static getBooks() {
+		let books;
+		if (localStorage.getItem('books') === null) {
+			books = [];
+		} else {
 			books = JSON.parse(localStorage.getItem('books'));
 			console.log(books);//array
-    }
-    return books;
-  }
+		}
+		return books;
+	}
 
 	//增加新書目
-  static addBook(book) {
+	static addBook(book) {
 		//一定要先取得既有的
+		//但為何要先取得既有的？如果我們不這麼做，會發生什麼事？
 		const books = Store.getBooks();
 		//再push新的書進去既有的值
 		books.push(book);
-    localStorage.setItem('books', JSON.stringify(books));
-  }
+		localStorage.setItem('books', JSON.stringify(books));
+	}
 
-  static removeBook(isbn) {
-    const books = Store.getBooks();
+	//一本書擁有一個獨一無二的isbn，我們可將其視為其id，刪除他的id可以確保不會重複刪除到其他的書目
+	static removeBook(isbn) {
+		const books = Store.getBooks();
 
-    books.forEach((book, index) => {
-      if(book.isbn === isbn) {
-        books.splice(index, 1);
-      }
-    });
+		books.forEach((book, index) => {
+			if (book.isbn === isbn) {
+				books.splice(index, 1);
+			}
+		});
 
-    localStorage.setItem('books', JSON.stringify(books));
-  }
+		localStorage.setItem('books', JSON.stringify(books));
+	}
 }
 
 
 //Event:Display books
+/* 在document的dom content載入完成後，觸發UI.displayBooks function */
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
 //Event:Add a book
