@@ -9,8 +9,12 @@ form.addEventListener('submit', e => {
     let message = [];
     
     //當name的值為空字串或空值時，表示使用者沒有輸入資訊，往message變量塞入警示訊息
-    if(name.value === ''||name.value === null){
-        message.push('姓名為必填欄位！')
+    if(name.value == null){
+        message.push('錯誤為空值！')
+    }
+
+    if(name.value === ''){
+        message.push('錯誤為空字串！')
     }
 
     //當password值的長度小於六位數時，往message變量塞入警示訊息
