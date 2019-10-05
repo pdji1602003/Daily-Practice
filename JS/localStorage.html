@@ -18,6 +18,18 @@
         sessionStorage.setItem('name', 'Maggie'); 
         // localStorage.removeItem('name'); //移除Local Storage的數據
         console.log(item01);
+
+        /* 以下範例取自：https://andy6804tw.github.io/2018/03/04/browser-localstorage/*/
+        //實作練習
+        const data = (localStorage.getItem('todoList'))?JSON.parse(localStorage.getItem('todoList')):{todo:[]};
+        data.todo.push('task 1', 'task 2','task 3','task 4');
+        localStorage.setItem('todoList', JSON.stringify(data));
+        //使用 splice 方法去除物件中某筆位置的資料，使用 indexOf() 方法得到某筆資料的位置。
+        data.todo.splice(data.todo.indexOf('task 3'), 1);
+        localStorage.setItem('todoList', JSON.stringify(data));
+
+
+        console.log(data);
     </script>
 
 </body>
