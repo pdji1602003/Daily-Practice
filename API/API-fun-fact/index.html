@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>API - Fun Fact</title>
+	<!-- BS 3 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+	<style>
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
+
+		body {
+			min-height: 100vh;
+			margin: 0;
+			padding: 0;
+			background-color: rgb(44, 44, 44);
+		}
+
+		.card-container {
+			margin-top: 10vh;
+			padding: 20px;
+			color: white;
+			background-color: #007bff;
+			border-radius: 10px;
+		}
+
+		.card-container h1 {
+			margin-top: 10px;
+		}
+
+		.card-container p {
+			font-size: 2rem;
+		}
+
+		.form-control {
+			height: 40px;
+			font-size: 1.8rem;
+		}
+
+		.card-content {
+			display: none;
+		}
+
+		.card-output {
+			font-size: 16px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-6">
+				<div class="card-container">
+					<h1>Number Facts</h1>
+					<p>Enter a number and get a random fact</p>
+					<input class="form-control" type="number" placeholder="Enter any number...">
+					<div class="card-content">
+						<h4>Number Fact</h4>
+						<div class="card-output"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		/*
+			串接API就兩個重點：
+			1.你的Base_URL是什麼？
+			2.對方提供給你什麼parameters?
+		*/
+		/*
+			1.發request到指定url取資料
+			2.取得資料後塞進<div class="card-out">裡
+			3.使用axios抓取資料(記得在<head>引入他的cdn)
+		*/
+		const BASE_URL = 'http://numbersapi.com/';
+		const inputElement = document.querySelector('[type="number"]');
+		const cardContent = document.querySelector('.card-content');
+		const output = document.querySelector('.card-output');
+		/* 
+			事件差異說明：input vs change
+			1. input:當控件(比方說<input>, <textarea>, <select>)的值(value)被修改時，即會"立刻"觸發input事件。
+			2. change:change事件僅當控件的值被提交時，比方說按下enter鍵。
+		*/
+		inputElement.addEventListener('input', e => {
+			const inputValue = inputElement.value;
+			axios
+				.get(`${BASE_URL}${inputValue}/trivia`)
+				// event作為參數傳入function內
+				.then(function (e) {
+					cardContent.style.display = 'block';
+					console.log(1);
+					//這個e.data data是event原本就有的屬性嗎？ 是的，並且data本身的型態是string
+					output.innerText = e.data;
+				})
+				.catch(error => console.log(error))
+
+		})
+	</script>
+</body>
+
+</html>
