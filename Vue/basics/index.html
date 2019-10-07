@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>JS - Vue</title>
+
+	<style>
+		*,
+		*::before,
+		*::after {
+			margin: 0;
+		}
+	</style>
+
+</head>
+
+<body>
+	<!-- 創建一個vue物件 -->
+	<div id="app" style="background-color: aquamarine;">
+		{{message}}
+		<div class="app-child">
+			{{message}}
+			{{score * .5 }}
+		</div>
+	</div>
+	<!-- <div id="test">Vanilla JS</div> -->
+
+	<!-- 基礎vue語法介紹 -->
+	<div id="syntax" style="background-color: bisque;">
+		<div class="message">{{message}}</div>
+		<!-- 相當於if...else語句：當loading為false，整個dom元素消失 -->
+		<div v-if="loading">訊息載入錯誤</div>
+		<!-- 相當於display:none：當loading為false，display:none，元素還是存在dom tree裡面 -->
+		<div v-show="loading">訊息載入錯誤</div>
+	</div>
+
+	<!-- vue的if/else語句 -->
+	<div id="result" style="background-color: cornflowerblue;">
+		<h2>妳考幾分呢？</h2>
+		<input type="text">
+		<p v-if="score >= 60">很棒，妳怎麼如此優秀</p>
+		<p v-else="score < 60">不及格，需要再加把勁哦！</p>
+	</div>
+
+	<!-- vue的v-model語句 -->
+	<div id="model" style="background-color: coral;">
+		台幣：<input type="text" v-model="message">元
+		<p>日幣：{{message / 0.25}}</p>
+		<br>
+		<p>美金：{{message / 30}}</p>
+	</div>
+
+	<!-- 傳統迴圈 -->
+	<ul class="tra-list" style="background-color: darkgray;"></ul>
+
+	<!-- v-for的用法 -->
+	<ul id="list01" style="background-color: bisque;">
+		<li v-for="list in lists">
+			{{list.fruit}}
+		</li>
+	</ul>
+	<!-- 列出index -->
+	<ul id="list02">
+		<li v-for="(list, index) in lists">
+			{{ parentMessage }} - {{ index }} - {{ list.fruit }}
+		</li>
+	</ul>
+
+	<!-- vue v-on 事件 -->
+	<div id="event" style="background-color: bisque;">
+		<button v-on:click="counter += 1">Add 1</button>
+		<p> THis button has been clicked {{counter}} times.</p>
+	</div>
+
+	<div id="event2"">
+		<button v-on:click=" greet">Click me!</button>
+	</div>
+
+	<div id="event3" style="background-color: bisque;">
+		<button v-on:click="say('Hello there')">Greeting</button>
+		<button @click="say('I love you 3000')">Confession</button>
+	</div>
+
+	<div id="event4">
+		<button @click="warn('Form can not be submitted yet', $event)">submit</button>
+	</div>
+
+	<!-- Vue CDN -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>
