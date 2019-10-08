@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Vue - Computed Property</title>
+	<style>
+		*, 
+		*::before, 
+		*::after {
+			margin: 0;
+		}
+
+		body > div {
+			padding: 10px;
+		}
+
+		body > div:nth-child(odd){
+			background-color: antiquewhite;
+		}
+
+		body > div:nth-child(even){
+			background-color: gainsboro;
+		}
+	
+	</style>
+</head>
+
+<body>
+	<!-- computed的作法示範 -->
+	<div id="app">
+		台幣:<input v-model="value" type="text" placeholder="請輸入台幣">元
+		<div class="result">
+			<ul>
+				<!-- 顯示出計算後的內容 -->
+				<li>日元：{{japan}}元</li>
+				<li>美金：{{USA}}元</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="bmi">
+		<p>現在時間：{{now}}</p>
+		<div class="result">
+			路人A年紀：<input type="text" v-model="ageA"><br>
+			路人B年紀：<input type="text" v-model="ageB">
+		</div>
+	</div>
+
+	<div id="example">
+		<p>Original Message:"{{message}}"</p>
+		<p>Computed Reversed Message:"{{reversedMessage}}"</p>
+	</div>
+	
+	<div id="fullname">{{fullname}}</div>
+
+	<!-- 使用watcher -->
+	<div id="watch">
+		<p>Ask a yes/no question: <input type="text" v-model="question"></p>
+		<p>{{answer}}</p>
+	</div>
+
+
+
+
+	<!-- Vue CDN -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+	<script>
+		//抓取input裡的值，
+		//在下方即時顯示對應的幣別金額
+		let app = new Vue({
+			el: '#app',
+			data: {
+				value: 12
+			},
+			computed: {
+				japan: function () {
+					let jpValue = this.value / 0.2927;
+					return parseFloat(jpValue).toFixed(2)
+				},
+				USA: function () {
+					let usaValue = this.value / 31.155;
+					return parseFloat(usaValue).toFixed(2)
+				}
+			}
+			// methods:{
+			// 	twoDigit:function(){
+			// 		console.log('hello');
+			// 		return parseFloat(this.value).toFixed(2);
+			// 		console.log('there');
+			// 	}
+			// }
+		})
+
+		// app.value = function(){
+		// 	return parseFloat(app.value).toFixed(2);
+		// }
+
+		//這個function的app.value並沒有辦法抓取到使用者在頁面上輸入的值
+		//只能抓取到我透過vue創建的app instance裡的值
+		function twoDigit() {
+			let inputValue = app.value;
+			let newValue = parseFloat(inputValue).toFixed(2);
+			console.log(newValue);
+			return newValue;
+		}
+		twoDigit();
+
+		//修改時間的值時，會同步更改年紀的值
+		let bmi = new Vue({
+			el: '#bmi',
+			data: {
+				time: 0,
+				ageA: 18,
+				ageB: 20
+			},
+			computed: {
+				now: function () {
+					let total = this.ageA + this.ageB;
+					//我在這邊創建了一個新的值
+					let time = new Date();
+					return time.getSeconds();
+
+				}
+			}
+		})
+
+		let example = new Vue({
+			el: '#example',
+			data: {
+				message: 'Hello'
+			},
+			/*
+				1. 需要針對data進行運算時，就使用computed計算屬性
+				2. 在computed裡創建的是屬性，而在methods裡創建的是function
+			*/
+			computed: {
+				//這邊提供的函數將用作屬性的getter函數(getter目前上不太明白)
+				//但確定的是，我們在這邊創造了一個屬性reversedMessage
+				reversedMessage: function () {
+					return this.message.split('').reverse().join('');
+				}
+			}
+			// methods:{
+			// 	reversedMessage:function(){
+			// 	return this.message.split('').reverse().join('');
+			// 	}
+			// }
+		})
+		console.log(example.message);//'Hello'
+		console.log(example.reversedMessage);//'olleH'
+
+		/* 
+			computed property vs methods
+		1. 不能在同一個組件裡宣告帶有相同名稱的property跟method
+		2. computed property是基於響應式依賴進行緩存，也就是說，當他依賴的原始數據有進行變動時，
+		computed property才會相應變更，若沒有任何變動，多次訪問computed property
+		都會取得相同的值，而不會重新計算求值，但function是每次渲染都會重新調用，
+		因此在此情景之下，computed property的效能會比method好。
+		*/
+		let fullname = new Vue({
+			el: '#fullname',
+			data: {
+				firstName: 'Foo',
+				lastName: 'Bar',
+				fullname: 'Foo Bar'
+			},
+			watch: {
+				firstName:function(val){
+					this.fullname = val + ' ' + this.lastName;
+				},
+				lastName:function(val){
+					this.fullname = this.firstName + ' ' + val;
+				}
+			}
+		})
+
+		let watch = new Vue({
+			el:'#watch', 
+			data:{
+				question:'',
+				answer:'I cannot give you an answer until you ask a question!'
+			}, 
+			//當question發生改變，這個函數就會運行
+			watch:{
+				question:function(oldQuestion, newQuestion){
+					this.answer = 'Waiting for you to stop typing...'
+					this.debouncedGetAnswer()
+				}
+			},
+			created:function(){
+				this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+			},
+			methods:{
+				getAnswer:function(){
+					if(this.question.indexOf('?') === -1){
+						this.answer = 'Questions ususally contains a question mark.'
+						return
+					}
+					this.answer = 'Thinking...'
+					let message = this
+					axios
+						.get('https://yesno.wtf/api/')
+						.then((result) => {
+							this.answer = result.data.answer
+						}).catch((err) => {
+							console.log(error);
+						});
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>
