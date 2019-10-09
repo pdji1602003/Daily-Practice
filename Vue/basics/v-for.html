@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Vue - for-loop</title>
+
+	<style>
+		*,
+		*::before,
+		*::after {
+			margin: 0;
+		}
+
+		body>ul:nth-of-type(odd) {
+			background-color: wheat;
+		}
+	</style>
+</head>
+
+<body>
+	<ul id="demo_01">
+		<!-- 渲染規則照vue，但取值邏輯本質上還是照js -->
+		<li v-for="item of items">{{item}}</li>
+		<li v-for="vegetable in vegetables">
+			{{vegetable.green}}</li>
+	</ul>
+	<ul id="demo_02">
+		<!-- v-for可以帶有name, index參數 -->
+		<li v-for="(value, name, index) in object">{{index}} : {{name}} - {{value}}</li>
+	</ul>
+
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+	<script>
+		//loop over array & object
+		let demo_01 = new Vue({
+			el: '#demo_01',
+			data: {
+				items: ['apple', 'orange', 'grape'],
+				vegetables: [
+					{ green: 'broccoli' },
+					{ green: 'cabbage' },
+					{ green: 'kale' }
+				]
+			}
+		})
+
+		//loop over object's property
+		let demo_02 = new Vue({
+			el: '#demo_02',
+			data: {
+				object: {
+					title: 'How to do lists in Vue',
+					author: 'Mary Jim',
+					publishedAt: '2018-04-10'
+				}
+			}
+		})
+	</script>
+
+</body>
+
+</html>
