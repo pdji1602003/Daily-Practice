@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>JS - Module</title>
+	<!-- script tag要添加type="module"才有辦法引入成功 -->
+	<script defer type="module" src="import.js"></script>
+</head>
+<body>
+	<ol>
+		<li>script tag要添加type="module"才有辦法引入成功</li>
+		<li>原先使用export default add語法無法成功匯出，需使用export {變量}才可以</li>
+		<li>目前Node.js還不支援import語法，此案例是用在瀏覽器端</li>
+		<li>必須在 <strong>http://localhost:5000</strong> 測試，否則可能遇到CORS problem</li>
+	</ol>
+
+</body>
+</html>
