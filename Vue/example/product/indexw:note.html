@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Vue</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script defer src="script.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="nav-bar"></div>
+	<div id="app">
+		<div class="product">
+			<div class="product-image">
+				<!-- v-bind:attribute 可以簡寫成=> :attribute -->
+				<img :src="image" alt="A pair of green socks">
+			</div>
+			<div class="product-info">
+				<h1>{{product}}</h1>
+				<p v-if="inStock > 0">In Stock</p>
+				<!-- v-else元素必須緊跟在v-if元素後面，否則它將不會被識別 -->
+				<p v-else :class="{outOfStock:!inStock}">Out of Stock</p>
+				<p>Shipping:{{shipping}}</p>
+				<!-- v-show比起以上的條件渲染在效能上更優，原因是他不會一再重複地將element add back/remove from DOM -->
+				<!-- <p v-show="inStock">In Stock</p> -->
+				<ul>
+					<li v-for="detail of details">{{detail}}</li>
+				</ul>
+				<div 
+				v-for="(variant, index) in variants" 
+				:key="variant.variantId" 
+				class="color-box" 
+				:style="{backgroundColor:variant.variantColor}"
+				@mouseover="updateProduct(index)">
+					<!-- @mouseover = v-on:mouseover -->
+					<!-- <p ></p> -->
+				</div>
+				<!-- 當data屬性裡的inSotck為假值時(這邊使用了一個判斷expression，記得使用花括號))，將stylesheet裡的disabled類綁定到button元素上 -->
+				<button 
+				v-on:click="addToCart" 
+				:disabled="!inStock"
+				:class="{disabledButton: !inStock}"
+				>Add to Cart</button>
+				<button @click="removeFromCart">Undo</button>
+				<div class="cart">
+					<p>Cart {{cart}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
