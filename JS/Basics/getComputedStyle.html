@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS - getComputedStyle</title>
+    <style>
+        :root {
+            --height: 53px;
+        }
+
+        #para {
+            font-size: 16px;
+            height: var(--height);
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="para">我是p元素</p>
+
+    <script>
+        let para = document.getElementById('para');
+        let computedStyle = getComputedStyle(para, null);//取得para元素在經過瀏覽器解析計算stylesheet後的"最終css值"
+        console.log(computedStyle);//返回值是一個包含para所有style的object
+        let computedFontSize = computedStyle.getPropertyValue('font-size');
+        console.log(computedFontSize);//取得經過計算的特定property value
+        let computedHeight = computedStyle.getPropertyValue('--height');
+        console.log(computedHeight);
+
+
+
+        /*
+        注意以下這行會出錯，因為computedStyle只是可讀，代表你無法改寫他的值。
+        很合理，既然值都是computed後的結果了，根本無需修改，
+        若你想修改，應該是要去改元素在style sheet裡的css值，如以下示例。
+        */
+        // computedStyle.setProperty('--height', '60px');
+
+        /* 
+        以下這行語法相當於#para的inline-styl更改--height的數值
+        (你在:root已聲明，而你在para這裡又重新覆寫過去))。
+        要特別注意的是：
+        1. --height:60px;只是等同於宣告變數
+        2. height:var(--height); 接在css property後以var引用才是真正"使用"這變數。
+        */
+        para.style.setProperty('--height', '60px');
+
+        /*
+        注意以下這行實際上不會取得任何值(如果你用console.log此styleHeight會顯示空白)
+        我認為是，因為height這屬性實際上引用變數，所以getPropertyValue無法正確取到變量的值。
+        更正，我認為是para的inline-style沒有height屬性
+        */
+        let styleHeight = para.style.getPropertyValue('height');
+        console.log(styleHeight);
+
+
+        let styleHeight1 = para.style.getPropertyValue('--height');
+        console.log(styleHeight1);//60px
+
+    </script>
+</body>
+
+</html>
