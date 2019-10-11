@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX</title>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button id="button">Get some text.</button>
+    <p id="para">使用AJAX修改本文內容</p>
+
+
+    <script>
+        let button = document.getElementById('button');
+        button.onclick = fetchText;
+        function fetchText() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'text.txt', true);
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    document.getElementById('para').innerText = this.responseText;
+                }
+            }
+            xhr.send();
+        }
+        console.log(Math.random());
+
+        // xmlhttp.open("GET", "/try/ajax/demo_get.php?t=" + Math.random(), true)
+        
+        // xmlhttp.open("GET", "/try/ajax/demo_get2.php?fname=Henry&lname=Ford", true);
+        
+
+    </script>
+</body>
+
+</html>

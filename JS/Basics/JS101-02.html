@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    /* 怎樣balance td裡的border =>將border-collapse設定在父元素上*/
+    .table {
+
+        border-spacing: 0;
+        /* border: 1px solid black; */
+        border-collapse: collapse;
+    }
+
+    .table>tbody>tr>td {
+        border: 1px solid black;
+        padding: 5px;
+        /* border-collapse: collapse; */
+    }
+</style>
+
+<body>
+
+    <div>Users:</div>
+    <ul>
+        <li>John</li>
+        <li>Pete</li>
+    </ul>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>1:1</td>
+                <td>2:1</td>
+                <td>3:1</td>
+                <td>4:1</td>
+                <td>5:1</td>
+            </tr>
+            <tr>
+                <td>1:2</td>
+                <td>2:2</td>
+                <td>3:2</td>
+                <td>4:2</td>
+                <td>5:2</td>
+            </tr>
+            <tr>
+                <td>1:3</td>
+                <td>2:3</td>
+                <td>3:3</td>
+                <td>4:3</td>
+                <td>5:3</td>
+            </tr>
+            <tr>
+                <td>1:4</td>
+                <td>2:4</td>
+                <td>3:4</td>
+                <td>4:4</td>
+                <td>5:4</td>
+            </tr>
+            <tr>
+                <td>1:5</td>
+                <td>2:5</td>
+                <td>3:5</td>
+                <td>4:5</td>
+                <td>5:5</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div id="test">hello world</div>
+    <script>
+        let user = {
+            name: "John",
+            age: 30,
+            isAdmin: true
+        };
+        //物件裡的key是字串
+        let x = "name";
+        console.log(user[x]);//"John"
+
+        // for (let key in user) { 
+        //     console.log(key);
+        //     console.log(user[key]); 
+        // }
+        //搜索： getElement* 和 querySelector*
+
+        //querySelector可以以任何css選擇器選中任意元素
+        let tableOddRow = document.querySelectorAll('table > tbody > tr:nth-child(odd)');
+        console.log(tableOddRow);
+        //這邊要注意的是，任何元素集合都須以for...loop的方式更動元素 或是forEach
+        for (let i = 0; i < tableOddRow.length; i++) {
+            tableOddRow[i].style.backgroundColor = 'yellow';
+        }
+
+        // 遍历 DOM //
+
+        //這樣抓取到的是所有節點中的第一個 === text，正確用法應該是firstElementChild
+        // const divElement = document.body.firstChild;
+
+        // const ulElement = document.body.children[1];
+        // const liElement = document.body.children[1].firstElementChild;
+        // console.log(divElement, ulElement, liElement);
+
+        //我們首先得獲取到對應的DOM object，將這obj賦予給一個變量，才能對這對象進行任意操作!(這很重要))
+        // let table = document.body.lastElementChild.previousElementSibling;
+        // table沒有length屬性
+        // console.log(table);
+
+        //有複數似乎都是元素集合，為一偽array對象，具有length屬性
+        // console.log(table.rows.length); //5，表示5列
+        // for (let i = 0; i<table.rows.length; i++){
+        //     let row = table.rows[i];
+        //     row.cells[i].style.backgroundColor = 'red';
+        // } 
+
+
+
+        // debugger
+        // function firstThing() {
+        //     console.log('first thing');
+        //     return 'first thing';
+        // }
+        // function secondThing() {
+        //     return firstThing() + ' second thing';
+        // }
+        // console.log(secondThing());
+
+
+        // function a(){
+        //     function b() {
+        //         console.log(myVar);
+        //     }
+        //     var myVar =2;
+        //     b();
+        // }
+        // a();
+
+
+
+
+
+        // for (let i = 2;i<11;i++) {
+        //     if(i%2 !=0) continue; //使用contiune的觀念
+        //     console.log(i);
+        // }
+        // for (let i = 0;i < 3;i++){
+        //     alert(`number ${i}!`);
+        // } //Output:number 0, number 1, number 2
+        // //===
+        // let i = 0;
+        // if( i < 3) { alert(`number ${i}!`); i++ }
+
+
+        /*
+        编写一个提示输入大于 100 的循环。如果使用者输入其他数值 —— 请他重新输入。
+        循环必须请求一个数值，直到使用者输入一个大于 100 的数值或取消输入/输入空行为止。
+
+        我们假设使用者只输入数值。在此任务中，不需要对非数值输入实现特殊处理。
+        */
+        // let input;
+        // do {
+        //     let input = prompt('Please enter a number.','');
+        //     console.log(input);
+        // }while(!input === false || input === '');
+
+        // for(;;){
+        //     let input = prompt('Please enter a number that\'s greater than 100','');//我覺得這行有個先後順序需要注意一下，先跳出prompt，再賦值給input
+        //     if (input > 100 || input === '') break;
+        // }
+
+        //當input小於100時，不斷跳出這個循環
+
+
+        //hw2：首字母大寫
+        //給定一字串，把第一個字轉成大寫之後「回傳」，若第一個字不是英文字母則忽略。
+        //capitalize('nick')正確回傳值：Nick
+        // function capitalise(string){
+        //     return string.toUpperCase();
+        // }
+        // console.log(capitalise('nick'));
+        // console.log(capitalise(',nick'));//還是會印出第一個非英文字母，不符合題目條件
+
+        // function capitalise(string){
+        //     let checkLetter = string.split('');
+        //     if ( checkLetter[0])
+
+        // }
+        //string跟array觀念不好
+        //我的思考流程是，參數是一個string，但作為參數，我要以引號包覆string嗎？
+        //若第一個字不是英文字母，代表需要檢查？使用if?
+        //但上述檢查是否可用toUpperCase方法進行？->toUppercase針對字串，並沒有提到若使用對象不是string，則該方法會怎樣->先試再說
+        //string.toUpperCase();->會將全數英文單字變成大寫
+        // function capitalize(str) {
+        //     return str[0].toUpperCase() + str.slice(1);//使用str[0]即可取得第一個字串第一個letter
+        // }
+        // console.log(capitalize('hello'));
+
+        // let age = prompt('How old are you?', '');
+        // alert(age);
+        // console.log(age);
+
+        // let sum = 0;
+        // while(true){
+        //     let value = +prompt('Enter a number','');//prompt前的一元運算符“+”會將返回值轉變成數字，遇到字串會變成NaN
+        //     console.log(value);
+        //     if (!value) break; //若是假值，則停止當前輸出
+        //     sum += value; // sum = sum + value;
+        // }
+        // console.log('Sum: ' + sum);
+
+        // let value = 18;
+        // !value;
+        // console.log(value); //18 -> 沒有重新將值賦予一新變量，所以value輸出依然為18 (跟++,--那邊的概念有點相似)
+
+        // let changeValue = !value;//!操作符將數值轉換成布爾值，數值為true，轉換後輸出即變成false
+        // console.log(changeValue);//false
+
+        // outer: for (let i = 0; i < 3; i++) {
+        //     for ( let j = 0; j < 3; j++) {
+        //         let input = prompt(`Value at coords(${i},${j})`,'');
+        //         if (!input) break outer;
+        //     }
+        // }
+        // alert('Done!');
+
+        /*
+        //創建一個object
+        //不能重複宣告
+        let user01 = {};
+        let user02 = new Object();
+        let newUser = {
+            name:'John',
+            age:'28'
+        };
+        console.log(newUser.age);
+        //因為newUser已經宣告了，增加屬性不用在宣告一次
+        newUser.admin = true;
+        console.log(newUser.admin);
+        delete newUser.name;
+        console.log(newUser);
+        newUser = {
+            age:'28',
+            admin:true,
+            "like birds":true
+        }
+        console.log(newUser);
+        let multi = {};
+
+        //set
+        multi["like birds"]=true;
+        console.log(multi);
+
+        //delete
+        delete multi["like birds"];//***刪除屬性，而不是整個物件
+        console.log(multi);//{} 輸出結果會變成空物件
+
+        let obj = {};
+        console.log(obj.noSuchProperty === undefined);//true --->代表物件裡不存在該屬性
+
+        //操作符"in"檢查object是否存在特定屬性，若存在會返回true，反之則是false
+        let user = {
+            name:'Mark',
+            age:27
+        };
+        console.log( "age" in user);//我覺得這個語法需要特別注意的是屬性要以 ***字串*** 呈現
+        let age = true;
+        console.log( age in user );
+
+
+        let newObj = {
+            test:undefined
+        };
+        console.log(newObj.test === undefined);
+        console.log("test" in newObj);// true! 這個屬性是真的存在！
+
+        //for...in循環
+
+        let girl = {
+            name:'Mary',
+            age:18,
+            isAdmin:true
+        };
+        for(key in girl){
+            console.log(key);//屬性名的代稱，看來是個保留字
+            console.log( girl[key] ); //獲取屬性名的value
+        }
+        */
+
+
+
+        //写一个方法 isEmpty(obj)，当对象没有属性的时候返回 true，否则返回 false。
+        /*
+        function isEmpty(){
+            if ( "key" === undefined) {
+                return true;
+            } else {
+                return false;
+            }
+            //return !("key" in obj);//這好像是確定特定屬性是否存在？
+        }
+        */
+
+        // function isEmpty( obj ) {
+        //     for ( let p in obj ) { 
+        //         if ( obj.hasOwnProperty( p ) ) { return false; }
+        //     }
+        //     return true;
+        // }
+        //===
+
+
+
+        // let schedule = {};
+        // console.log( isEmpty(schedule) ); //false
+        // schedule["8:30"] = "get up";
+        // console.log( isEmpty(schedule) );
+
+
+
+        // let person = prompt('Who\'s there?', '');
+
+        // if (person === 'Admin') {
+
+        //     let password = prompt('Password', '');
+
+        //     if (password === 'TheMaster') {
+        //         alert('Welcome!');
+        //     } else if (password === null || password === '') {
+        //         alert('Canceled');
+        //     } else {
+        //         alert('Wrong password');
+        //     }
+
+        // } else if (person === null || person === '') {
+        //     alert('Canceled');
+        // } else {
+        //     alert('I don\'t know you');
+        // }
+        // let n = 3;
+        // nextPrime:
+        // for (let i = 2; i <= n; i++) { // 对每个自然数
+
+        //     for (let j = 2; j < i; j++) { // 寻找一个除数……
+        //         if (i % j == 0) continue nextPrime; // 不是素数，则继续检查下一个
+        //     }
+
+        //     console.log(i);
+        // }
+
+
+        // let user = {
+        //     name: "John",
+        //     age: 30
+        // };
+
+        // let anything = prompt("What do you want to know about the user?", "name");
+
+        // // 获取变量
+        // alert(user[anything]); // John (如果输入 "name" )
+
+
+    </script>
+</body>
+
+</html>

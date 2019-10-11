@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom</title>
+
+    <style>
+        .myStyle {
+            width: 200px;
+            height: 200px;
+
+            /* 單行水平置中 */
+            line-height: 200px;
+            /* 文本垂直置中 */
+            text-align: center;
+            background-color: bisque;
+        }
+
+        .anotherClass {
+            background-color: aqua;
+        }
+
+        .newClass {
+            color: aliceblue;
+            background-color: brown;
+        }
+
+        .input-style {
+            width: 100px;
+            text-align: center;
+
+            border-radius: 4px;
+            border: 2px blue solid;
+            box-shadow: .5px 1px 0 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="myStyle anotherClass">
+        我是一個div元素
+    </div>
+    <button id="button">Click me!</button>
+    <p class="answer"></p>
+    <input value="Strange">
+
+
+
+
+    <script>
+        let button = document.getElementById('button');
+        button.onclick = setAttribute;
+
+        function setAttribute() {
+            let inputElement = document.querySelector('input');
+            //等同於<input type="button">
+            inputElement.setAttribute('type', 'button');
+            inputElement.classList.toggle('input-style');
+        }
+
+
+
+
+        /* 切換class
+        function toggleStyle(){
+            let divElement = document.querySelector('div');
+            divElement.classList.toggle('newClass');
+        }
+        */
+
+        /* 檢查div元素是否存在指定class類
+        function checkStyle(){
+            let divElement = document.querySelector('div');
+            if(divElement.classList.contains('myStyle') === true){
+                document.querySelector('.answer').innerText = 'there is this class.';
+            }
+        }
+        */
+
+        /* 檢查div元素是否存在指定class類
+        let button =document.getElementById('button');
+        button.onclick = checkStyle;
+
+        function checkStyle(){
+            let divElement = document.querySelector('div');
+            if(divElement.classList.contains('myStyle') === true){
+                divElement.classList.remove('anotherClass');
+            } else {
+                alert('There is no such style.')
+            }
+        }
+        */
+
+        /* 創建一個textNode
+        let button =document.getElementById('button');
+
+        button.onclick = createText;
+
+        function createText(){
+            let paraElement = document.createElement('p');
+            // 這邊要注意的是，createTextNode是document的方法
+            let text = document.createTextNode('Hello World');
+            paraElement.append(text);
+
+            //這個方法奇怪的地方是，若有很多button，我怎麼去精確描述我的目標button是哪一個？
+            // document.body.insertBefore(paraElement, button);
+
+            // 使用append就可以確保是從後頭新增，而insertBefore則可以從前面新增
+            document.body.append(paraElement);
+
+        }
+        */
+
+    </script>
+</body>
+
+</html>

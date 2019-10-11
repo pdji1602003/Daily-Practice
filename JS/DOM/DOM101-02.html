@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM element navigation</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+        let newDiv = document.createElement('div');
+
+        // newDiv.innerText = 'hello world';
+        
+        newDiv.className = 'test';
+        
+        newDiv.setAttribute('title', 'Hello div');
+        
+        newDiv.style.backgroundColor = 'red';
+        
+        // Create text node
+        let newDivText = document.createTextNode('hello world');
+
+        //Append text node to new div
+        newDiv.appendChild(newDivText);
+
+        //到目前為止，newDiv都只存在我們的js檔案裡，我們需要透過其他方法將div元素塞進dom裡面
+        let body = document.body;
+        let script = document.querySelector('script');
+        
+        //這個方法要注意的是，insertBefore要用在parentNode上，也就是body跟newDiv之間要具有層級關係。
+        body.insertBefore(newDiv, script);//parentNode.insertBefore(欲塞入的元素, 欲置放在後的元素)
+        
+        newDiv.style.fontSize = '2rem';
+    
+    </script>
+</body>
+</html>
