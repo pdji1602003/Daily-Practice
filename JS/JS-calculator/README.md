@@ -14,3 +14,4 @@ Thank you for anyone who stops by!
 4. 按下「AC」可以清除面板上的全部數字。
 5. 按下「DEL」可以清除一個數字。
 6. 「.」在一個數字裡最多只會出現一次。
+7. 畫面重整不會顯示上次操作結果，因此判斷無需使用localStorage。
