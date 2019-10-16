@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
@@ -15,38 +16,38 @@
         <div class="calc-screen">0</div>
         <div class="calc-numbers">
             <div class="calc-row">
-                <button class="calc-btn">C</button>
-                <button class="calc-btn">CE</button>
-                <button class="calc-btn">Back</button>
-                <button class="calc-btn">+/-</button>
-                <button class="calc-btn">%</button>
+                <button type="button" class="calc-btn" value="all-clear" data-all-clear>AC</button>
+                <button type="button" class="calc-btn" value="clear-entry" data-clear-entry>CE</button>
+                <button type="button" class="calc-btn" value="back" data-back>Back</button>
+                <button type="button" class="calc-btn" value="+/-" data-pos-neg>+ / -</button>
+                <button type="button" class="calc-btn" value="%" data-one-hundred>%</button>
             </div>
             <div class="calc-row">
-                <button class="calc-btn">7</button>
-                <button class="calc-btn">8</button>
-                <button class="calc-btn">9</button>
-                <button class="calc-btn">/</button>
-                <button class="calc-btn">sqrt</button>
+                <button type="button" class="calc-btn calc-number" value="7" data-number>7</button>
+                <button type="button" class="calc-btn calc-number" value="8" data-number>8</button>
+                <button type="button" class="calc-btn calc-number" value="9" data-number>9</button>
+                <button type="button" class="calc-btn" value="/" data-operator>&divide;</button>
+                <button type="button" class="calc-btn" value="sqrt" data-sqrt>sqrt</button>
             </div>
             <div class="calc-row">
-                <button class="calc-btn">4</button>
-                <button class="calc-btn">5</button>
-                <button class="calc-btn">6</button>
-                <button class="calc-btn">*</button>
-                <button class="calc-btn">1/x</button>
+                <button type="button" class="calc-btn calc-number" value="4" data-number>4</button>
+                <button type="button" class="calc-btn calc-number" value="5" data-number>5</button>
+                <button type="button" class="calc-btn calc-number" value="6" data-number>6</button>
+                <button type="button" class="calc-btn" value="x" data-operator>&times;</button>
+                <button type="button" class="calc-btn" value="1/x" data-portion>1 / &times;</button>
             </div>
             <div class="calc-row">
-                <button class="calc-btn">1</button>
-                <button class="calc-btn">2</button>
-                <button class="calc-btn">3</button>
-                <button class="calc-btn">-</button>
-                <button class="calc-btn">pi</button>
+                <button type="button" class="calc-btn calc-number" value="1" data-number>1</button>
+                <button type="button" class="calc-btn calc-number" value="2" data-number>2</button>
+                <button type="button" class="calc-btn calc-number" value="3" data-number>3</button>
+                <button type="button" class="calc-btn" value="-" data-operator>-</button>
+                <button type="button" class="calc-btn" value="pi" data-pi>pi</button>
             </div>
             <div class="calc-row">
-                <button class="calc-btn span-two">0</button>
-                <button class="calc-btn">.</button>
-                <button class="calc-btn">+</button>
-                <button class="calc-btn">=</button>
+                <button type="button" class="calc-btn calc-number span-two" value="0" data-number>0</button>
+                <button type="button" class="calc-btn calc-number" value="." data-decimal>.</button>
+                <button type="button" class="calc-btn" value="+" data-operator>+</button>
+                <button type="button" class="calc-btn" value="=" data-operator>=</button>
             </div>
         </div>
     </div>
