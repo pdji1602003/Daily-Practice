@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS - Absolute</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body * {
+            margin: 0;
+        }
+
+        .box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+
+            background-color: bisque;
+        }
+
+        .para {
+            position: absolute;
+            top: 1rem;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            margin: auto; /* 使para這個元素於box這容器內垂直水平置中 */
+            
+            display: flex;/* 使para裡的元素(in this case, it's text)於para這容器內垂直水平置中 */
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            background: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p class="para">absolute element</p>
+    </div>
+</body>
+
+</html>
