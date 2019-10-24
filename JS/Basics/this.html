@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>This的用法</title>
+	<style>
+		a[data-img]{
+			cursor: pointer;
+		}
+
+		a[data-img]:hover {
+			color: rgb(250, 160, 40);
+		}
+
+		.img-container {
+			width: 200px;
+			height: 200px;
+			overflow: hidden;
+			display: none;
+		}
+
+		.img-container:first-of-type {
+			display: block;
+		}
+
+		.img-container > img {
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+
+	<header>
+		<h1>JaveScript Events</h1>
+	</header>
+	<main>
+		<h3>Pictures</h3>
+		<ul>
+			<li><a data-img="pic01">Simon Cowell</a></li>
+			<li><a data-img="pic02">Bruce Willis</a></li>
+			<li><a data-img="pic03">Ben Carson</a></li>
+		</ul>
+		<div id="pic01" class="img-container">
+			<img src="http://upload.wikimedia.org/wikipedia/commons/a/aa/Simon_Cowell_in_December_2011.jpg"
+				alt="Simon Cowell">
+		</div>
+		<div id="pic02" class="img-container">
+			<img src="http://upload.wikimedia.org/wikipedia/commons/0/03/Bruce_Willis_by_Gage_Skidmore.jpg"
+				alt="Bruce Willis">
+		</div>
+		<div id="pic03" class="img-container">
+			<img
+				src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Ben_Carson_by_Skidmore_with_lighting_correction.jpg/220px-Ben_Carson_by_Skidmore_with_lighting_correction.jpg"
+				alt="Ben Carson">
+		</div>
+
+	</main>
+	<script>
+		//當我點擊人名時，對應的相片會出現，其餘相片會隱藏
+		//限制是，只能使用一個function達成
+		const link01 = document.querySelector('[data-img="pic01"]');
+		const link02 = document.querySelector('[data-img="pic02"]');
+		const link03 = document.querySelector('[data-img="pic03"]');
+		
+		link01.addEventListener('click', showPic);
+		link02.addEventListener('click', showPic);
+		link03.addEventListener('click', showPic);
+
+		function showPic() {
+			console.dir(this);//這個this指的是"誰"調用這個方法
+			const selectedLink = this.attributes[0].value;// 可以寫成這樣this.attributes["data-img"].value;
+			const images = document.querySelectorAll('.img-container');
+			images.forEach(img => {
+				if(img.id === selectedLink) {
+					img.style.display = 'block';
+				} else {
+					img.style.display = 'none';
+				}
+			})
+		}
+	</script>
+</body>
+
+</html>
