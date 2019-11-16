@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+
+
+	<style>
+		#elem-container {
+			position: absolute;
+			left: 100px;
+			top: 200px;
+			height: 100px;
+			background-color: thistle;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="elem-container">dummy</div>
+	<div id="output"></div>
+	<script>
+		function getTheStyle() {
+			const el = document.getElementById('elem-container');
+			const elCSSProp = window.getComputedStyle(el, null).getPropertyValue('height');
+			document.getElementById('output').innerHTML = elCSSProp;
+		}
+
+		getTheStyle();
+
+	</script>
+	
+
+</body>
+
+</html>
