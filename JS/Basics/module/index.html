@@ -6,12 +6,14 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>JS - Module</title>
 	<!-- script tag要添加type="module"才有辦法引入成功 -->
-	<script defer type="module" src="import.js"></script>
+	<!-- 如果此script已以type標明類型為module，則此sciprt預設會以defer載入，換句話說就不用額外加寫defer -->
+	<script type="module" src="main.js"></script>
 </head>
 <body>
 	<ol>
 		<li>script tag要添加type="module"才有辦法引入成功</li>
-		<li>原先使用export default add語法無法成功匯出，需使用export {變量}才可以</li>
+		<li>如果此script已以type標明類型為module，則此sciprt預設會以defer載入，換句話說就不用額外加寫defer</li>
+		<li style="text-decoration:line-through;">原先使用export default add語法無法成功匯出，需使用export {變量}才可以</li>
 		<li>目前Node.js還不支援import語法，此案例是用在瀏覽器端</li>
 		<li>必須在 <strong>http://localhost:5000</strong> 測試，否則可能遇到CORS problem</li>
 	</ol>
