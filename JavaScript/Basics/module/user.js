@@ -1,4 +1,4 @@
-// 只有單一個constructor function可作為default輸出
+// default設定只能設定一次
 export default class User {
 	constructor(name, age){
 		this.name = name
