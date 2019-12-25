@@ -59,8 +59,8 @@ being passed as an argument and assigned to a variable
 衍生提一下closure，中文翻譯為閉包
 但我認真覺得：光看閉包這名詞怎麼可能理解其代表意思！！！
 For the sake of brevity，我覺得可以把closure理解成JS語言的一種表現特性
-在這邊我想要引用一下 Dan Abramov 在 [What Is JavaScript Made Of?](https://overreacted.io/what-is-javascript-made-of/)
-裡所出的解釋：
+在這邊我想要引用一下 Dan Abramov 在 What Is JavaScript Made Of?
+裡所提出的解釋：
 Normally, when you exit a function, 
 all its variables “disappear”. 
 This is because nothing needs them anymore. 
@@ -73,17 +73,16 @@ So in this case, JavaScript takes care of “keeping the variables alive” i
 nstead of “forgetting” them as it would usually do. 
 This is called a “closure”. 
 
+Closure特別就特別在於，當function裡又define一個function並且作為外部function的返回值時，
+當我們在調用外部function後，我們所獲取的inner function會記得outer function的變數。
 
 
-
-也因為記得我們的初始值
-
-Spread operator可以進行哪些事情？複製 合併 展開
-Host 託管者
+Spread operator可以進行哪些事情？複製, 合併, 展開
+Host：託管者
 Local development environment = local host
 Require 跟 import 的差異
-npm build
-deploy的意思
+npm build：minify every file
+deploy的意思：部署到server的過程
 什麼是robots.txt
 manifest.json
 Html entities
@@ -91,16 +90,19 @@ Html entities
 什麼是aria-hidden
 Why do we need to clear setTimeout
 
-
-Fr 相當於flex-grow
+Grid的Fr相當於flex-grow，會接受剩餘空間
 
 輸入input 內容
 按下enter submit
 submit之後 input文字消失
 taskItem基於取得內容渲染出來
-如何使用devTool確認監聽的事件有無發生
-When React starts up, it starts listening for all events at the top level using a single event listener.的意思
-What is controlled form form is controlled by state
+如何使用devTool確認監聽的事件有無發生 => devTool裡的Event Listener
+
+When React starts up, 
+it starts listening for all events at the top level using a single event listener
+
+What is controlled form 
+In React, form is controlled by state
 State should be single source of truth
 Controlled form 跟一般form有何不同
 為何我們需要在控件上加上name屬性
@@ -110,9 +112,7 @@ Controlled form 跟一般form有何不同
 react所有component的state都存在state裡
 
 
-
-React 不能mutate
-
+React不能mutate
 Helper function真的很重要
 
 找到所有tasks 並將其display設為’’
@@ -123,28 +123,28 @@ Helper function真的很重要
 什麼是function scope vs block scope
 Not defined代表這個變數根本就還沒被創建
 Undefined指的是已經有這個變數了，只是它還沒被賦值
+
 什麼是flag
 
-
-
-Derived state
+Derived state：衍生狀態
 JavaScript是個高階語言，當我們在決定數據類型時，實際上就是在分配記憶體容量
 為何我們不可以直接mutate state in react
 Save as sketch的副本一樣
 
 當我們創建一個新的變數，並將這個變數的值設為等同某已存在的變數(其值為array)時，我們實際上在做的事情是，我們創建了一個新指向(reference)，而不是拷貝了既有的變數的值
-
 當我們更新新變數的值時，因為此變數與既有變數指向同一個記憶體位置，我們會不小心更動了既有變數的值。
 
+在css裡使用*選取器{
+	Outline vs border
+}讓每個元素無所遁形=> good for debugging
 
-
-Outline vs border
 如何檢查值在copy還是reference? console.log(prevState === this.state)
 
-Now, mutating currentStateCopy won't mutate the original state. Do operations over currentStateCopy and set it as the new state using setState()
- It queues a state transition based on what it thinks is going on which may not include the direct changes to this.state.
+“...Now, mutating currentStateCopy won't mutate the original state. 
+Do operations over currentStateCopy and set it as the new state using setState()
+It queues a state transition based on what it thinks is going on which may not include the direct changes to this.state.”
 
-將-1轉譯為不存在
-…args
+將 -1 在腦海裡轉譯為不存在
+當你不確定arguments的數目時，可以使用function(…args)
 What is Geolocation API?
 */
