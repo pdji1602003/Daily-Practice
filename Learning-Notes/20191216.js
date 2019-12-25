@@ -65,7 +65,7 @@ Object.assign(
 36. 如何update package.json
 37. 為何我們需要將constant 變數大寫？
 38. —save-dev意思
-39. What is side effect?
+39. What is side effect? 
 40. 當我們想要進行一些操作，那這些操作是會更改外部環境的時候，我們就要使用useEffect
 41. What is grid
 42. npx install後面接package名稱是代表局部安裝
