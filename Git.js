@@ -1,3 +1,46 @@
+// 於2020/01/04補充
+/*
+
+git checkout master
+切換到master分支
+
+git checkout -b <bran-name>
+當實作完一個網站，但需要新增一個新功能時，可以透過以上git checkout取出當前分支
+透過-b 註明我新取出的branch name。
+換句話說，"git checkout -b searchBar"的意思就是
+使用git command取出當前分支，並新建(-b)一個branch名稱為searchBar。
+
+
+git push --set-upstream origin searchBar
+若是在本地端進行這件checkout的，那遠端可能還不存在一個叫做searchBar的branch
+這時候(或許)可以透過--set-upstream設定遠端的上游。
+git push --set-upstream origin searchBar
+意思是push此分支，將此分支上游設為searchBar，並作為push上去的目的地。
+
+git push -u origin searchBar
+意思是push此分支，將此分支上游設為searchBar，並作為push上去的目的地。(可能是上游已存在searchBar此分支)
+
+what is a pull request?
+GitHub會自動幫你建立一個pull request，我們可以在pull request裡敘述我們在某特定branch裡所做出的一些更動。
+
+
+git branch with the star sign
+確認自己目前在哪一個branch
+使用git branch會印出local端所有的branch
+branch with a star sign就是你目前處在的branch
+
+git branch -d <branch name>
+在本地刪除<branch name>分支
+
+git merge(merging a pull request)
+一旦完成feature開發，我們可以把checkout的branch merged回去，並刪除checkout的branch。
+
+what is a fast-forward merge?
+"A fast-forward merge can occur when there is a linear path from the current branch tip to the target branch."
+for more info, see:https://www.atlassian.com/git/tutorials/using-branches/git-merge
+*/
+
+
 /* 
 Git Commands
 
