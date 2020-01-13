@@ -1,0 +1,163 @@
+@import './main.css';
+@import './link.css';
+@import './feature.css';
+@import './faq.css';
+
+/* BASIC SETUP */
+
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+/* START FROM HERE */
+
+html {
+	font-size: 20px;
+}
+
+body {
+	font-family: "Maison Neue", sans-serif;
+	color: #300D4F;
+	min-height: 100vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+header {
+	background-color: #FFF3F1;
+}
+
+section {
+	max-width: 1200px;
+	margin: 0 auto;
+	margin-bottom: 3rem;
+}
+
+h2 {
+	font-size: 2rem;
+	font-weight: bolder;
+}
+
+.pricing-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.pricing-header_logo {
+	display: inline-block;
+	vertical-align: middle;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.pricing-header_logo>img {
+	display: inline-block;
+	width: 150px;
+	vertical-align: middle;
+}
+
+.pricing-header_navbar, .pricing-header_signin {
+	display: flex;
+	justify-content: space-between;
+}
+
+.pricing-header li {
+	padding: .5rem .8rem;
+}
+
+.pricing-header_navbar-item {
+	position: relative;
+}
+
+.pricing-header_navbar-menu {
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 2;
+	background-color: white;
+	box-shadow: 0 -1px 8px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	visibility: hidden;
+}
+
+.pricing-header_navbar-item>a:hover+.pricing-header_navbar-menu {
+	visibility: visible;
+}
+
+.pricing-header_navbar-menu::before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	right: 50%;
+	top: -10px;
+	transform: translateX(-50%);
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid white;
+}
+
+.pricing-header_navbar-menu-container::before {
+	content: '';
+	float: left;
+	width: .8rem;
+	height: .8rem;
+	margin-top: 6px;
+	border-radius: 50%;
+	background-color: salmon;
+}
+
+.pricing-header_navbar-menu-item {
+	width: calc(100% - .8rem);
+	margin-left: 1.5rem;
+}
+
+.pricing-header_navbar-menu-item>h6 {
+	text-transform: uppercase;
+	font-size: 1rem;
+	font-weight: 900;
+	letter-spacing: -1px;
+}
+
+.pricing-header_navbar-menu-item>p {
+	font-size: 0.75rem;
+	white-space: nowrap;
+}
+
+.pricing-header_navbar-menu-container:hover {
+	background-color: #ccc;
+}
+
+.pricing-header_signin-item:first-child>a {
+	transition: border-bottom linear .5s;
+	border-bottom: 3px solid #C223CE;
+}
+
+.pricing-header_signin-item:first-child:hover>a {
+	border-bottom: 3px solid #300D4F;
+}
+
+.pricing-header_signin-item:nth-child(2) {
+	border-radius: 2px;
+	border: 2px solid #C223CE;
+	background-color: #C223CE;
+}
+
+.pricing-header_signin-item:nth-child(2)>a {
+	color: white;
+}
+
+.pricing-header_signin-item:nth-child(2):hover {
+	background-color: transparent;
+}
+
+.pricing-header_signin-item:nth-child(2):hover>a {
+	color: black;
+}

@@ -1,0 +1,38 @@
+.link {
+	display: inline-block;
+	color: black;
+	font-size: .8rem;
+	font-weight: bolder;
+	text-align: center;
+	text-decoration: none;
+	letter-spacing: -.5px;
+}
+
+.link-lg {
+	padding: .5rem 1rem;
+	width: 100%;
+}
+
+.link-primary {
+	color: white;
+	border-radius: 2px;
+	border: 2px solid #C223CE;
+	background-color: #C223CE;
+}
+
+.link-primary:hover {
+	color: #300D4F;
+	background-color: transparent;
+}
+
+.link-secondary {
+	color: #300D4F;
+	border-radius: 2px;
+	border: 2px solid white;
+	background-color: white;
+}
+
+.link-secondary:hover {
+	color: white;
+	background-color: transparent;
+}

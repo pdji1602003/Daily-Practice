@@ -1,0 +1,139 @@
+.pricing-heading>h1 {
+	margin-bottom: 5px;
+	font-weight: bolder;
+	text-transform: uppercase;
+}
+
+.pricing-heading>p {
+	font-size: .8rem;
+	font-weight: bolder;
+}
+
+.pricing-table {
+	display: flex;
+	justify-content: center;
+}
+
+.pricing-tier {
+	flex: 1;
+	min-height: 65vh;
+	margin: .5rem;
+	padding: 1rem;
+	background-color: #fff;
+	box-shadow: 0px 1px 30px rgba(0, 0, 0, 0.08);
+	border-radius: 4px;
+}
+
+.pricing-tier:last-child {
+	color: white;
+	background-color: #300D4F;
+}
+
+.pricing-tier>div {
+	position: relative;
+	height: 40%;
+	margin-bottom: 1rem;
+}
+
+.pricing-tier>div>h3 {
+	margin-bottom: .5rem;
+	font-size: 2rem;
+	font-weight: bolder;
+	letter-spacing: -1px;
+}
+
+.pricing-tier>div>h4 {
+	font-size: 1.2rem;
+	font-weight: bolder;
+}
+
+.pricing-tier>div>p {
+	font-size: .75rem;
+	font-weight: 300;
+}
+
+.pricing-tier>div>a {
+	position: absolute;
+	bottom: 0;
+}
+
+.pricing-tier_feature-list>li {
+	position: relative;
+	margin-bottom: 10px;
+	padding-left: 1rem;
+	font-size: .8rem;
+	word-spacing: 2px;
+}
+
+.pricing-tier_feature-list>li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	width: 8px;
+	border-bottom: 4px solid #300D4F;
+	height: 16px;
+	border-right: 4px solid #300D4F;
+	transform: rotate(45%);
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+
+.pricing-tier:last-child .pricing-tier_feature-list>li::before {
+	border-bottom: 4px solid white;
+	border-right: 4px solid white;
+}
+
+.fa-info-circle {
+	position: relative;
+	color: #C223CE;
+	cursor: pointer;
+}
+
+[data-tooltip] {
+	position: relative;
+	display: inline-block;
+	top: -.5rem;
+	right: .5rem;
+	z-index: -1;
+	visibility: hidden;
+}
+
+[data-tooltip]::after {
+	content: attr(data-tooltip);
+	position: absolute;
+	top: -50%;
+	z-index: 3;
+	transform: translate(0, -50%);
+	min-width: 250px;
+	padding: 0.5rem 1rem;
+	line-height: 1.3;
+	color: #300D4F;
+	border-radius: 4px;
+	background-color: white;
+	box-shadow: 0px 1px 5px rgba(0,0,0,0.8);
+}
+
+[data-tooltip]::before {
+	content: '';
+	position: absolute;
+	z-index: 4;
+	top: 50%;
+	right: 100%;
+	width: 0;
+	height: 0;
+	margin-top: -5px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+}
+
+.fa-info-circle:hover + [data-tooltip] {
+	pointer-events: none;
+	z-index: 1;
+	visibility: visible;
+} 
+
+
+
+

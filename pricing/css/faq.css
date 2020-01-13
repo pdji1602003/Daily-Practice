@@ -1,0 +1,82 @@
+.pricing-faq_title {
+	margin-bottom: 1.75rem;
+}
+
+.pricing-faq_faq-container {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+.pricing-faq_faq {
+	--faq-margin: 1rem;
+	position: relative;
+	width: calc(50% - var(--faq-margin));
+	margin-right: var(--faq-margin);
+	margin-bottom: 1.75rem;
+	padding: 1rem;
+	background-color: white;
+	box-shadow: 0 1px 30px rgba(0, 0, 0, 0.08);
+	border-radius: 6px;
+}
+
+.pricing-faq_faq:nth-child(even) {
+	margin-right: 0;
+}
+
+.pricing-faq_question {
+	font-size: 1.5rem;
+	font-weight: bolder;
+	letter-spacing: -1px;
+}
+
+.pricing-faq_button {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	width: 1.6rem;
+	height: 1.6rem;
+	text-align: center;
+	font-weight: bolder;
+	line-height: 1.5rem;
+	border: 2px solid #C223CE;
+	border-radius: 50%;
+}
+
+.pricing-faq_button::before, .pricing-faq_button::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: #C223CE;
+	width: 15px;
+	height: 2px;
+}
+
+.pricing-faq_button::before {
+	transform: translate(-8px, -2px) rotate(90deg);
+}
+
+.pricing-faq_button::after {
+	transform: translate(-8px, -2px) rotate(180deg);
+}
+
+.pricing-faq_answer {
+	font-size: .8rem;
+	font-weight: normal;
+	letter-spacing: -1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+}
+
+[type="checkbox"] {
+	position: absolute;
+	opacity: 0;
+}
+
+
+[type="checkbox"]:checked ~ .pricing-faq_answer {
+	position: static;
+	opacity: 1;
+}
